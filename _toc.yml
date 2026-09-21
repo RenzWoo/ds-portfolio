@@ -1,0 +1,16 @@
+format: jb-book
+root: intro
+parts:
+  - caption: AI & Machine Learning
+    chapters:
+      - file: projects/smart-trip-cdo
+      - file: projects/market-direction-ml
+      - file: projects/kaggle-dataset-finder
+  - caption: Statistics & Data Engineering
+    chapters:
+      - file: projects/coffee-bootstrap
+      - file: projects/visitor-tracker
+  - caption: Data Visualization
+    chapters:
+      - file: projects/diabetes-3d-map
+      - file: projects/volcanic-eruptions
