@@ -1,0 +1,973 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Market Direction Prediction: From Chart-Image CNN to Tabular ML &#8212; Portfolio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/market-direction-ml';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Kaggle Dataset Finder: LLM + Semantic Search Pipeline" href="kaggle-dataset-finder.html" />
+    <link rel="prev" title="SmartTrip CDO: Static RAG for Travel Itineraries" href="smart-trip-cdo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Portfolio</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI &amp; Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="smart-trip-cdo.html">SmartTrip CDO: Static RAG for Travel Itineraries</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Market Direction Prediction: From Chart-Image CNN to Tabular ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaggle-dataset-finder.html">Kaggle Dataset Finder: LLM + Semantic Search Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics &amp; Data Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="coffee-bootstrap.html">Robust Income Estimation for Coffee Farmers: A Bootstrap Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visitor-tracker.html">Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="diabetes-3d-map.html">U.S. Diabetes Prevalence: A 3D County-Level Choropleth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanic-eruptions.html">Philippine Volcanic Eruptions: Does Explosivity Predict Deaths?</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/RenzWoo/ds-portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/market-direction-ml.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Market Direction Prediction: From Chart-Image CNN to Tabular ML</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-feature-engineering">3. Preprocessing &amp; Feature Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-walk-forward-cv-macro-ovr-auc">5.1 Tuning (walk-forward CV, macro OvR AUC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chronological-holdout-last-1-000-rows">5.2 Chronological holdout (last 1,000 rows)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="market-direction-prediction-from-chart-image-cnn-to-tabular-ml">
+<h1>Market Direction Prediction: From Chart-Image CNN to Tabular ML<a class="headerlink" href="#market-direction-prediction-from-chart-image-cnn-to-tabular-ml" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>Personal machine-learning project</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Domain</strong></p></td>
+<td><p>Financial time series · Forex (GBPUSD, USDJPY)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tools</strong></p></td>
+<td><p>Python, pandas, NumPy, scikit-learn, LightGBM, XGBoost, Optuna, <code class="docutils literal notranslate"><span class="pre">ta</span></code>, MetaTrader5 API, matplotlib, PyTorch</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Date</strong></p></td>
+<td><p>2026</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Repository</strong></p></td>
+<td><p>[GitHub repo link]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>TL;DR:</strong> An end-to-end pipeline that pulls raw price bars from MetaTrader 5, engineers technical and
+candle-shape features, labels each bar by whether price hits an ATR-scaled upper or lower target first, and
+compares tuned Random Forest, LightGBM, and XGBoost classifiers with time-aware validation. The project
+started as a <strong>chart-image CNN</strong> and evolved into a tabular approach. The honest outcome: only a <strong>weak
+signal</strong> (walk-forward CV AUC ≈ 0.55, holdout AUC between 0.47 and 0.59), and the main lesson is about
+rigorous, leakage-free evaluation.</p>
+</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-4 sd-row-cols-lg-4 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+58.6k</div>
+<p class="sd-card-text">30-min bars per FX pair (Jan 2022 to Sep 2026)</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+17</div>
+<p class="sd-card-text">engineered model features</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+3</div>
+<p class="sd-card-text">model families tuned with Bayesian search (Optuna)</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+≈ 0.55</div>
+<p class="sd-card-text">tuned walk-forward CV AUC (chance = 0.50)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="problem-statement">
+<h2>1. Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h2>
+<p>Can simple, interpretable market features predict whether price will move <strong>up, down, or stay neutral</strong> over the
+next few hours, and can that signal survive <em>time-aware</em> validation?</p>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Build a reproducible data pipeline from a broker feed to a model-ready table.</p></li>
+<li><p>Define a <strong>label</strong> that reflects a tradable move (volatility-scaled), not just “next candle up/down”.</p></li>
+<li><p>Identify which features carry signal and which are redundant.</p></li>
+<li><p>Tune and compare tree-ensemble models without look-ahead leakage.</p></li>
+<li><p>Report results honestly, including when there is little to no edge.</p></li>
+</ul>
+<p><strong>Project evolution</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Phase</p></th>
+<th class="head"><p>Idea</p></th>
+<th class="head"><p>What exists in the repo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1. Chart-image CNN</p></td>
+<td><p>Render 30-candle price windows as images labelled <code class="docutils literal notranslate"><span class="pre">up</span></code> / <code class="docutils literal notranslate"><span class="pre">down</span></code> / <code class="docutils literal notranslate"><span class="pre">neutral</span></code> (5-step look-ahead, ±0.3% threshold) and classify them with a CNN</p></td>
+<td><p>Image-dataset generator (<code class="docutils literal notranslate"><span class="pre">CNN_model_window.py</span></code>) and a PyTorch checkpoint inspector. The CNN training code and image folders are not committed (<code class="docutils literal notranslate"><span class="pre">dataset/</span></code> is git-ignored).</p></td>
+</tr>
+<tr class="row-odd"><td><p>2. Tabular ML</p></td>
+<td><p>Engineer indicator/candle features and use gradient-boosted trees</p></td>
+<td><p>Feature pipeline, feature analysis, Optuna tuning, model evaluation notebooks</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="data-storage">
+<h2>2. Data &amp; Storage<a class="headerlink" href="#data-storage" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Source</strong></p></td>
+<td><p>MetaTrader 5 broker feed via the <code class="docutils literal notranslate"><span class="pre">MetaTrader5</span></code> Python API (<code class="docutils literal notranslate"><span class="pre">copy_rates_range</span></code>, with a fallback to <code class="docutils literal notranslate"><span class="pre">copy_rates_from_pos</span></code> when the date range fails). Timestamps requested in UTC.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Raw fields</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">open,</span> <span class="pre">high,</span> <span class="pre">low,</span> <span class="pre">close,</span> <span class="pre">tick_volume</span> <span class="pre">(→</span> <span class="pre">volume),</span> <span class="pre">real_volume,</span> <span class="pre">spread</span></code>, indexed by <code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Volume</strong></p></td>
+<td><p>GBPUSD 30-min: <strong>58,615 bars</strong>; USDJPY 30-min: <strong>58,618 bars</strong> (2022-01-03 to 2026-09-18). A 5-minute set hit the broker’s ~100k-bar cap (99,999 bars from May 2025); a daily set has 446 bars.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>In-memory</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code>, sorted chronologically (MT5 exports can arrive newest-first)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>On disk</strong></p></td>
+<td><p>Feature tables saved as CSV snapshots (e.g. <code class="docutils literal notranslate"><span class="pre">GBPUSD_M30_2024-2026_final.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">usdjpy_final.csv</span></code>); chart images stored in class folders (<code class="docutils literal notranslate"><span class="pre">up/</span></code>, <code class="docutils literal notranslate"><span class="pre">down/</span></code>, <code class="docutils literal notranslate"><span class="pre">neutral/</span></code>); model weights in a <code class="docutils literal notranslate"><span class="pre">.pth</span></code> checkpoint</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Repo hygiene</strong></p></td>
+<td><p>Large/derived folders (<code class="docutils literal notranslate"><span class="pre">dataset/</span></code>, <code class="docutils literal notranslate"><span class="pre">dataset_test/</span></code>, <code class="docutils literal notranslate"><span class="pre">literatures/</span></code>) excluded with <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="preprocessing-feature-engineering">
+<h2>3. Preprocessing &amp; Feature Engineering<a class="headerlink" href="#preprocessing-feature-engineering" title="Link to this heading">#</a></h2>
+<p><strong>Cleaning steps</strong></p>
+<ul class="simple">
+<li><p>Parse timestamps → <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code>, sort ascending, drop unused <code class="docutils literal notranslate"><span class="pre">real_volume</span></code> (all zeros for FX).</p></li>
+<li><p>Check whether volume is populated; only build volume features if it is.</p></li>
+<li><p>Replace impossible zeros with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (<code class="docutils literal notranslate"><span class="pre">atr</span></code>, <code class="docutils literal notranslate"><span class="pre">adx</span></code>) and guard divisions by zero-range bars.</p></li>
+<li><p>Drop rows with missing values or labels <em>after</em> feature/label construction (warm-up rows for rolling indicators and the tail rows that have no future).</p></li>
+<li><p>Apply a <strong>late-session filter</strong> (<code class="docutils literal notranslate"><span class="pre">hour</span> <span class="pre">&gt;</span> <span class="pre">19</span></code>) to the 30-minute FX datasets.</p></li>
+<li><p>Chronological <strong>train/test split</strong>: the last 1,000 rows are a holdout; nothing is shuffled.</p></li>
+<li><p>Wrap models in scikit-learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>s (<code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code> → Random Forest) so preprocessing is fitted on training data only.</p></li>
+</ul>
+<p><strong>Engineered features (17)</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Group</p></th>
+<th class="head"><p>Features</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Volatility</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">atr</span></code> (14), <code class="docutils literal notranslate"><span class="pre">atr_daily</span></code> (window ≈ one trading day), <code class="docutils literal notranslate"><span class="pre">atr_ratio</span></code> (bar range ÷ ATR)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Momentum / trend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rsi</span></code> (14), <code class="docutils literal notranslate"><span class="pre">roc</span></code> (10), <code class="docutils literal notranslate"><span class="pre">adx</span></code> (14), <code class="docutils literal notranslate"><span class="pre">cci</span></code> (20)</p></td>
+</tr>
+<tr class="row-even"><td><p>Candle shape (scale-free)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bar_direction</span></code>, <code class="docutils literal notranslate"><span class="pre">close_position</span></code>, <code class="docutils literal notranslate"><span class="pre">body_ratio</span></code>, <code class="docutils literal notranslate"><span class="pre">upper_wick</span></code>, <code class="docutils literal notranslate"><span class="pre">lower_wick</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Participation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">volume</span></code>, <code class="docutils literal notranslate"><span class="pre">rel_volume</span></code> (volume ÷ 20-bar mean), <code class="docutils literal notranslate"><span class="pre">spread</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Time</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">dayofweek</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Raw price levels (<code class="docutils literal notranslate"><span class="pre">open/high/low/close</span></code>) are <strong>deliberately excluded</strong> from the model inputs because they are
+non-stationary.</p>
+<p><strong>Label design (triple-barrier style)</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>threshold   = ATR_daily[t-1] × multiplier          # volatility-scaled; ATR lagged 1 bar to avoid leakage
+upper / lower barriers = close[t] ± threshold
+label = 1 (UP)      if a future HIGH touches the upper barrier first within the look-ahead window
+        0 (DOWN)    if a future LOW touches the lower barrier first
+        2 (NEUTRAL) if neither is touched
+</pre></div>
+</div>
+<p>Resulting label balance after filtering (GBPUSD 30-min, 9,725 rows): <strong>4,246 down, 4,186 up, 1,293 neutral.</strong></p>
+</section>
+<section id="method">
+<h2>4. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MT5 feed ─▶ bars (DataFrame) ─▶ indicators + candle features ─▶ barrier labels ─▶ dropna + session filter
+        ─▶ feature selection (F-test · mutual information · RF importance · correlation)
+        ─▶ Optuna tuning with walk-forward CV (TimeSeriesSplit, 5 folds)
+        ─▶ chronological holdout evaluation (last 1,000 rows)
+</pre></div>
+</div>
+<p><strong>Feature selection</strong> (GBPUSD 30-min sample, 31,910 rows, 16 candidate features) combined four views:
+ANOVA F-test (linear signal), mutual information (non-linear), Random-Forest importance (time-ordered fit),
+and a Pearson correlation check for redundancy (|r| &gt; 0.8).</p>
+<p><strong>Hyperparameter tuning</strong></p>
+<ul class="simple">
+<li><p>Optuna (Bayesian optimisation), maximising <strong>macro one-vs-rest ROC-AUC</strong> averaged over 5 <code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit</span></code> folds.</p></li>
+<li><p>Search spaces: Random Forest (11 parameters incl. <code class="docutils literal notranslate"><span class="pre">ccp_alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">class_weight</span></code>, <code class="docutils literal notranslate"><span class="pre">max_samples</span></code>), LightGBM
+(regularisation, leaves, learning rate) and XGBoost (depth, <code class="docutils literal notranslate"><span class="pre">gamma</span></code>, L1/L2).</p></li>
+<li><p>A custom <strong>early-stopping callback</strong> (patience 50 trials, min improvement 0.001) ends stagnant studies.</p></li>
+<li><p>Folds where a class is missing return <code class="docutils literal notranslate"><span class="pre">NaN</span></code> and are ignored rather than crashing the search.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">NAVY</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">GOLD</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREY</span> <span class="o">=</span> <span class="s2">&quot;#0A2540&quot;</span><span class="p">,</span> <span class="s2">&quot;#1565C0&quot;</span><span class="p">,</span> <span class="s2">&quot;#4FC3F7&quot;</span><span class="p">,</span> <span class="s2">&quot;#E0A030&quot;</span><span class="p">,</span> <span class="s2">&quot;#B23A48&quot;</span><span class="p">,</span> <span class="s2">&quot;#8A94A6&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;figure.dpi&quot;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s2">&quot;axes.spines.top&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;axes.spines.right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;axes.grid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;axes.titleweight&quot;</span><span class="p">:</span> <span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;axes.titlesize&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Transcribed from the saved Feature-analysis notebook output (GBPUSD 30-min, n = 31,910)</span>
+<span class="n">fa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;atr&quot;</span><span class="p">,</span><span class="s2">&quot;spread&quot;</span><span class="p">,</span><span class="s2">&quot;adx&quot;</span><span class="p">,</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span><span class="s2">&quot;dayofweek&quot;</span><span class="p">,</span><span class="s2">&quot;rsi&quot;</span><span class="p">,</span><span class="s2">&quot;volume&quot;</span><span class="p">,</span><span class="s2">&quot;roc&quot;</span><span class="p">,</span><span class="s2">&quot;rel_volume&quot;</span><span class="p">,</span><span class="s2">&quot;cci&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;atr_ratio&quot;</span><span class="p">,</span><span class="s2">&quot;body_ratio&quot;</span><span class="p">,</span><span class="s2">&quot;upper_wick&quot;</span><span class="p">,</span><span class="s2">&quot;close_position&quot;</span><span class="p">,</span><span class="s2">&quot;lower_wick&quot;</span><span class="p">,</span><span class="s2">&quot;bar_direction&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;rf_importance&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2915</span><span class="p">,</span><span class="mf">0.1462</span><span class="p">,</span><span class="mf">0.0893</span><span class="p">,</span><span class="mf">0.0786</span><span class="p">,</span><span class="mf">0.0619</span><span class="p">,</span><span class="mf">0.0605</span><span class="p">,</span><span class="mf">0.0599</span><span class="p">,</span><span class="mf">0.0572</span><span class="p">,</span><span class="mf">0.0477</span><span class="p">,</span><span class="mf">0.0376</span><span class="p">,</span>
+                      <span class="mf">0.0185</span><span class="p">,</span><span class="mf">0.0139</span><span class="p">,</span><span class="mf">0.0124</span><span class="p">,</span><span class="mf">0.0121</span><span class="p">,</span><span class="mf">0.0120</span><span class="p">,</span><span class="mf">0.0006</span><span class="p">],</span>
+    <span class="s2">&quot;mutual_info&quot;</span><span class="p">:</span>   <span class="p">[</span><span class="mf">0.0227</span><span class="p">,</span><span class="mf">0.0048</span><span class="p">,</span><span class="mf">0.0089</span><span class="p">,</span><span class="mf">0.0099</span><span class="p">,</span><span class="mf">0.0037</span><span class="p">,</span><span class="mf">0.0045</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">,</span><span class="mf">0.0099</span><span class="p">,</span><span class="mf">0.0028</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">,</span>
+                      <span class="mf">0.0095</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0023</span><span class="p">,</span><span class="mf">0.0004</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="n">dropped</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cci&quot;</span><span class="p">:</span> <span class="s2">&quot;redundant with RSI (r = 0.84)&quot;</span><span class="p">,</span> <span class="s2">&quot;bar_direction&quot;</span><span class="p">:</span> <span class="s2">&quot;no signal&quot;</span><span class="p">,</span> <span class="s2">&quot;body_ratio&quot;</span><span class="p">:</span> <span class="s2">&quot;no signal&quot;</span><span class="p">}</span>
+
+<span class="n">fa</span> <span class="o">=</span> <span class="n">fa</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;rf_importance&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">RED</span> <span class="k">if</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dropped</span> <span class="k">else</span> <span class="n">BLUE</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fa</span><span class="o">.</span><span class="n">feature</span><span class="p">]</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">fa</span><span class="o">.</span><span class="n">feature</span><span class="p">,</span> <span class="n">fa</span><span class="o">.</span><span class="n">rf_importance</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Random Forest importance&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">fa</span><span class="o">.</span><span class="n">feature</span><span class="p">,</span> <span class="n">fa</span><span class="o">.</span><span class="n">mutual_info</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Mutual information with label&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="s2">&quot;red = dropped from the final set (cci: redundant with rsi · bar_direction, body_ratio: no signal on any method)&quot;</span><span class="p">,</span>
+         <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9aa5dede097d876c1c625955966cf2b41d49b14fefbfd99ed5b5bd5e1e59eb5d.png" src="../_images/9aa5dede097d876c1c625955966cf2b41d49b14fefbfd99ed5b5bd5e1e59eb5d.png" />
+</div>
+</div>
+<p><strong>Feature-selection findings</strong></p>
+<ul class="simple">
+<li><p><strong>Volatility dominates.</strong> <code class="docutils literal notranslate"><span class="pre">atr</span></code> ranks first under all three methods, and <code class="docutils literal notranslate"><span class="pre">spread</span></code> and time-of-day
+(<code class="docutils literal notranslate"><span class="pre">hour</span></code>) also rank high on several of them. This makes sense: the label is defined by ATR-scaled barriers, so volatility regimes shape it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsi</span></code> and <code class="docutils literal notranslate"><span class="pre">cci</span></code> are highly correlated (r = 0.84), so the weaker one (<code class="docutils literal notranslate"><span class="pre">cci</span></code>) was dropped. <code class="docutils literal notranslate"><span class="pre">bar_direction</span></code> and
+<code class="docutils literal notranslate"><span class="pre">body_ratio</span></code> showed no measurable signal on any method. <strong>13 features</strong> were recommended.</p></li>
+<li><p>Several features are statistically significant by F-test yet carry very little mutual information, a
+reminder that a small p-value on 30k rows is not the same as predictive usefulness.</p></li>
+</ul>
+</section>
+<section id="results">
+<h2>5. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<section id="tuning-walk-forward-cv-macro-ovr-auc">
+<h3>5.1 Tuning (walk-forward CV, macro OvR AUC)<a class="headerlink" href="#tuning-walk-forward-cv-macro-ovr-auc" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature set</p></th>
+<th class="head"><p>Random Forest</p></th>
+<th class="head"><p>LightGBM</p></th>
+<th class="head"><p>XGBoost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All 16 candidates</p></td>
+<td><p>0.5481</p></td>
+<td><p>0.5481</p></td>
+<td><p>0.5487</p></td>
+</tr>
+<tr class="row-odd"><td><p>13-feature subset</p></td>
+<td><p>0.5483</p></td>
+<td><p><strong>0.5504</strong></p></td>
+<td><p>0.5485</p></td>
+</tr>
+<tr class="row-even"><td><p>14-feature subset</p></td>
+<td><p>0.5475</p></td>
+<td><p>0.5496</p></td>
+<td><p><strong>0.5500</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All three model families converged on <strong>≈ 0.55</strong>, and re-running with different feature subsets barely moved
+the score. The ceiling comes from the <strong>features and label</strong>, not from the choice of algorithm.</p>
+</section>
+<section id="chronological-holdout-last-1-000-rows">
+<h3>5.2 Chronological holdout (last 1,000 rows)<a class="headerlink" href="#chronological-holdout-last-1-000-rows" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">NAVY</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">GOLD</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREY</span> <span class="o">=</span> <span class="s2">&quot;#0A2540&quot;</span><span class="p">,</span> <span class="s2">&quot;#1565C0&quot;</span><span class="p">,</span> <span class="s2">&quot;#4FC3F7&quot;</span><span class="p">,</span> <span class="s2">&quot;#E0A030&quot;</span><span class="p">,</span> <span class="s2">&quot;#B23A48&quot;</span><span class="p">,</span> <span class="s2">&quot;#8A94A6&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;figure.dpi&quot;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s2">&quot;axes.spines.top&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;axes.spines.right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;axes.grid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;axes.titleweight&quot;</span><span class="p">:</span> <span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;axes.titlesize&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Holdout ROC-AUC (macro OvR) transcribed from the saved evaluation output</span>
+<span class="n">hold</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;GBPUSD 30-min</span><span class="se">\n</span><span class="s2">(3 classes)&quot;</span><span class="p">:</span>            <span class="p">[</span><span class="mf">0.4887</span><span class="p">,</span> <span class="mf">0.4657</span><span class="p">,</span> <span class="mf">0.4735</span><span class="p">],</span>
+    <span class="s2">&quot;USDJPY 30-min</span><span class="se">\n</span><span class="s2">(3 classes)&quot;</span><span class="p">:</span>            <span class="p">[</span><span class="mf">0.4866</span><span class="p">,</span> <span class="mf">0.4951</span><span class="p">,</span> <span class="mf">0.4994</span><span class="p">],</span>
+    <span class="s2">&quot;5-min set</span><span class="se">\n</span><span class="s2">(binary up/down)&quot;</span><span class="p">:</span>           <span class="p">[</span><span class="mf">0.4900</span><span class="p">,</span> <span class="mf">0.5745</span><span class="p">,</span> <span class="mf">0.5497</span><span class="p">],</span>
+    <span class="s2">&quot;30-min set, alt. barrier config</span><span class="se">\n</span><span class="s2">(3 classes)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5874</span><span class="p">,</span> <span class="mf">0.5742</span><span class="p">,</span> <span class="mf">0.5806</span><span class="p">],</span>
+<span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;LightGBM&quot;</span><span class="p">,</span> <span class="s2">&quot;XGBoost&quot;</span><span class="p">])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">hold</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">w</span> <span class="o">=</span> <span class="mf">0.24</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">hold</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">[</span><span class="n">BLUE</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">GOLD</span><span class="p">])):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">w</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">hold</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">model</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>          <span class="c1"># stem from the chance line</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">110</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">xv</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">vals</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.006</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="o">-</span><span class="mf">0.011</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">NAVY</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.5045</span><span class="p">,</span> <span class="s2">&quot;chance (0.50)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">hold</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.55</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.45</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.62</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ROC-AUC&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Holdout ROC-AUC by dataset and model (stems start at the chance line)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/d7049cb5dd04e573ba6ff6ff36bc375496e76606c57c0186f54cd2b81d5de5b1.png" src="../_images/d7049cb5dd04e573ba6ff6ff36bc375496e76606c57c0186f54cd2b81d5de5b1.png" />
+</div>
+</div>
+<p><strong>How to read this</strong></p>
+<ul class="simple">
+<li><p>On the two main 30-minute FX datasets, holdout AUC sits <strong>at or below 0.50</strong>: no reliable edge.</p></li>
+<li><p>The higher values (0.57–0.59) come from alternative labelling configurations evaluated on only 1,000 rows
+(a few weeks of bars). After trying many dataset/label/model combinations, some scores above chance are
+expected from <strong>selection noise alone</strong>, so they are treated as leads, not findings.</p></li>
+<li><p>The gap between CV (≈ 0.55) and holdout (≈ 0.50) suggests optimistic validation: label windows overlap
+across folds, and hyperparameters were selected on the same folds. It may also reflect regime change.</p></li>
+<li><p>Macro-F1 stays low (≈ 0.24–0.32 on the three-class sets), consistent with little usable signal.</p></li>
+</ul>
+</section>
+</section>
+<section id="data-science-concepts-demonstrated">
+<h2>6. Data Science Concepts Demonstrated<a class="headerlink" href="#data-science-concepts-demonstrated" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Where it appears</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Data ingestion from an API</strong></p></td>
+<td><p>MetaTrader 5 client with fallback logic and UTC handling</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Time-series feature engineering</strong></p></td>
+<td><p>Rolling indicators (ATR, RSI, ADX, ROC, CCI), relative volume, candle geometry, calendar features</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Label engineering</strong></p></td>
+<td><p>Volatility-scaled triple-barrier labels; lagged ATR to prevent target leakage</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Stationarity awareness</strong></p></td>
+<td><p>Raw price levels excluded; scale-free ratios used</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Feature selection</strong></p></td>
+<td><p>ANOVA F-test, mutual information, RF importance, correlation-based redundancy pruning</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Leakage-safe validation</strong></p></td>
+<td><p>Chronological split, <code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit</span></code>, preprocessing inside the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hyperparameter optimisation</strong></p></td>
+<td><p>Optuna Bayesian search with custom early stopping</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multiclass evaluation</strong></p></td>
+<td><p>Macro one-vs-rest ROC-AUC, F1, log-loss, per-class fallbacks</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Class imbalance handling</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">class_weight</span></code> options in the search space; neutral class is the minority</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Honest reporting</strong></p></td>
+<td><p>Comparison against chance level; noise and selection-bias caveats</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Computer vision (exploratory)</strong></p></td>
+<td><p>Chart-image dataset generation for a CNN</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limitations-next-steps">
+<h2>7. Limitations &amp; Next Steps<a class="headerlink" href="#limitations-next-steps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Purged / embargoed cross-validation.</strong> Labels look up to ~47 bars ahead, so neighbouring samples overlap.
+Use purged walk-forward CV to remove that leakage before trusting tuned scores.</p></li>
+<li><p><strong>Same-bar ambiguity.</strong> If a bar touches both barriers, the label currently checks the upper barrier first;
+finer-timeframe data or a tie rule would remove this bias.</p></li>
+<li><p><strong>Larger, multi-window holdout.</strong> Replace the single 1,000-row test with rolling out-of-sample windows and
+report mean ± SD; correct for the number of configurations tried.</p></li>
+<li><p><strong>Trading realism.</strong> Add spreads, slippage, and a simple backtest (Sharpe, drawdown) to test whether even a
+small AUC is exploitable.</p></li>
+<li><p><strong>Probability calibration and thresholds.</strong> Calibrate probabilities and abstain on low-confidence bars.</p></li>
+<li><p><strong>Revisit the CNN.</strong> Finish the image branch (train and evaluate, then compare against the tabular baseline).</p></li>
+<li><p><strong>Experiment tracking.</strong> Log runs with MLflow or Weights &amp; Biases and package the pipeline as a script or CLI.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="smart-trip-cdo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SmartTrip CDO: Static RAG for Travel Itineraries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="kaggle-dataset-finder.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Kaggle Dataset Finder: LLM + Semantic Search Pipeline</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-feature-engineering">3. Preprocessing &amp; Feature Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-walk-forward-cv-macro-ovr-auc">5.1 Tuning (walk-forward CV, macro OvR AUC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chronological-holdout-last-1-000-rows">5.2 Chronological holdout (last 1,000 rows)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Robust Income Estimation for Coffee Farmers: A Bootstrap Study &#8212; Portfolio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/coffee-bootstrap';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline" href="visitor-tracker.html" />
+    <link rel="prev" title="Kaggle Dataset Finder: LLM + Semantic Search Pipeline" href="kaggle-dataset-finder.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Portfolio</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI &amp; Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="smart-trip-cdo.html">SmartTrip CDO: Static RAG for Travel Itineraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-direction-ml.html">Market Direction Prediction: From Chart-Image CNN to Tabular ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaggle-dataset-finder.html">Kaggle Dataset Finder: LLM + Semantic Search Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics &amp; Data Engineering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Robust Income Estimation for Coffee Farmers: A Bootstrap Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visitor-tracker.html">Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="diabetes-3d-map.html">U.S. Diabetes Prevalence: A 3D County-Level Choropleth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanic-eruptions.html">Philippine Volcanic Eruptions: Does Explosivity Predict Deaths?</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/RenzWoo/ds-portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/coffee-bootstrap.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Robust Income Estimation for Coffee Farmers: A Bootstrap Study</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-handling">3. Preprocessing &amp; Data Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-for-mean-annual-income-95">5.1 Confidence intervals for mean annual income (95%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-four-diagnostic-experiments-showed">5.2 What the four diagnostic experiments showed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stress-tests-blocks-and-median">5.3 Stress tests, blocks, and median</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="robust-income-estimation-for-coffee-farmers-a-bootstrap-study">
+<h1>Robust Income Estimation for Coffee Farmers: A Bootstrap Study<a class="headerlink" href="#robust-income-estimation-for-coffee-farmers-a-bootstrap-study" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>Statistics / computational inference report (27-page R Markdown → PDF)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Domain</strong></p></td>
+<td><p>Agricultural economics · Bukidnon, Philippines</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tools</strong></p></td>
+<td><p>R, <code class="docutils literal notranslate"><span class="pre">boot</span></code>, <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>, <code class="docutils literal notranslate"><span class="pre">patchwork</span></code>, <code class="docutils literal notranslate"><span class="pre">moments</span></code>, <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, knitr / xelatex</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Date</strong></p></td>
+<td><p>2025</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Repository</strong></p></td>
+<td><p>[GitHub repo link]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>TL;DR:</strong> Coffee-farm income is right-skewed and includes losses, which breaks the normality assumption
+behind classical confidence intervals. This study uses <strong>bootstrap resampling</strong> (5,000 resamples) on a
+synthetic dataset of 200 farmers to compare parametric, percentile, and <strong>BCa</strong> intervals, then stress-tests
+them with outliers, small samples, a convergence study, clustering by barangay, and subgroup analysis by coffee variety.</p>
+</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-4 sd-row-cols-lg-4 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+200</div>
+<p class="sd-card-text">farmers across 18 barangays (synthetic)</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+5,000</div>
+<p class="sd-card-text">bootstrap resamples (B), chosen via convergence study</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+1.10</div>
+<p class="sd-card-text">skewness of raw income (right-skewed)</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+21.5%</div>
+<p class="sd-card-text">of farmers at a net loss</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="problem-statement">
+<h2>1. Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h2>
+<p>Smallholder farm income is volatile, skewed, and sometimes negative. A textbook <em>t</em>-interval assumes the
+sampling distribution of the mean is roughly normal and symmetric, which can misrepresent uncertainty when
+data are skewed, outliers are present, or subgroups are small.</p>
+<p><strong>Research questions</strong></p>
+<ol class="arabic simple">
+<li><p>How do bootstrap intervals differ from parametric <em>t</em>-intervals (width, symmetry, bias correction)?</p></li>
+<li><p>How does the bootstrap sampling distribution of the mean behave under skew, outliers, and negative values?</p></li>
+<li><p>How many resamples are enough for stable intervals?</p></li>
+<li><p><em>When</em> does BCa give a practical advantage (sample size, skewness, outliers)?</p></li>
+<li><p>Can bootstrap remain informative for small subgroups such as coffee varieties?</p></li>
+<li><p>How sensitive are the results to the independence assumption within barangays, and what does synthetic
+data mean for external validity?</p></li>
+</ol>
+</section>
+<section id="data-storage">
+<h2>2. Data &amp; Storage<a class="headerlink" href="#data-storage" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Source</strong></p></td>
+<td><p><strong>Synthetic</strong>, generated to mirror documented properties of smallholder coffee income (right skew, net losses, variety differences). Real farm finances were avoided for ethical and logistical reasons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Format</strong></p></td>
+<td><p>Flat CSV (<code class="docutils literal notranslate"><span class="pre">bukidnon_coffee_farmers_200_generated.csv</span></code>), read with <code class="docutils literal notranslate"><span class="pre">read.csv</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Size</strong></p></td>
+<td><p>200 rows; farmer-level records across 18 barangays</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Variables</strong></p></td>
+<td><p>Farm size (ha), coffee variety (Arabica, Robusta, Liberica), annual production (kg), market price per kg, operating costs, <strong>net annual income (PHP)</strong>, barangay</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Reproducibility</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">set.seed(42)</span></code>; global <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">=</span> <span class="pre">5000</span></code>, <code class="docutils literal notranslate"><span class="pre">N_SIM</span> <span class="pre">=</span> <span class="pre">1000</span></code>; whole analysis knitted to PDF with fixed parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Outputs</strong></p></td>
+<td><p>Report PDF + R Markdown source in the repository</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Raw income profile</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Value (PHP)</p></th>
+<th class="head"><p>Statistic</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mean</p></td>
+<td><p>42,759.55</p></td>
+<td><p>Skewness</p></td>
+<td><p>1.10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Median</p></td>
+<td><p>27,201.50</p></td>
+<td><p>Kurtosis</p></td>
+<td><p>3.87</p></td>
+</tr>
+<tr class="row-even"><td><p>Std. dev.</p></td>
+<td><p>55,599.95</p></td>
+<td><p>Coeff. of variation</p></td>
+<td><p>1.30</p></td>
+</tr>
+<tr class="row-odd"><td><p>IQR</p></td>
+<td><p>70,227.75</p></td>
+<td><p>% at net loss</p></td>
+<td><p>21.5%</p></td>
+</tr>
+<tr class="row-even"><td><p>Min / Max</p></td>
+<td><p>−41,208 / 227,952</p></td>
+<td><p>Mean − median gap</p></td>
+<td><p>≈ 15,558</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="preprocessing-data-handling">
+<h2>3. Preprocessing &amp; Data Handling<a class="headerlink" href="#preprocessing-data-handling" title="Link to this heading">#</a></h2>
+<p>The data are already tidy, so the work is in <strong>structuring the resampling units</strong>:</p>
+<ul class="simple">
+<li><p>Extract the income vector and profile it: mean/median gap, skewness, kurtosis, share of negative values.</p></li>
+<li><p><strong>Verify the algorithm:</strong> a hand-written bootstrap loop (<code class="docutils literal notranslate"><span class="pre">sample(...,</span> <span class="pre">replace</span> <span class="pre">=</span> <span class="pre">TRUE)</span></code>) was checked against
+<code class="docutils literal notranslate"><span class="pre">boot::boot()</span></code>; the means differ by only PHP 73.78.</p></li>
+<li><p><strong>Slice by group:</strong> subsets by <code class="docutils literal notranslate"><span class="pre">Coffee_Type</span></code> for variety-level intervals, and by <code class="docutils literal notranslate"><span class="pre">Barangay</span></code> to build resampling blocks.</p></li>
+<li><p><strong>Create stress-test datasets:</strong> a copy without the top 5% of incomes, and random sub-samples of n = 20, 40, 60, 80.</p></li>
+<li><p><strong>Track resampling internals:</strong> a 1,000 × 200 selection-count matrix records how often each farmer is drawn per resample.</p></li>
+</ul>
+</section>
+<section id="method">
+<h2>4. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Design</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Bootstrap</strong></p></td>
+<td><p>Resample 200 incomes with replacement B = 5,000 times; statistic = mean</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interval types</strong></p></td>
+<td><p>Parametric <em>t</em>; percentile; <strong>BCa</strong> (bias-correction z₀ + acceleration <em>a</em> from jackknife influence values)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Four diagnostic experiments</strong></p></td>
+<td><p>(1) moment shifts across resamples, (2) density shape, (3) observation-level selection frequency vs. Poisson(1), (4) variance decomposition</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Stress tests</strong></p></td>
+<td><p>Outlier removal and small sub-samples (an extreme-skewness test is outlined in the methods but not reported)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Convergence study</strong></p></td>
+<td><p>B from 200 to 8,000 in steps of 200, 20 independent runs per B</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Block bootstrap</strong></p></td>
+<td><p>Resample whole <strong>barangays</strong> to test the independence assumption</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Subgroups &amp; median</strong></p></td>
+<td><p>BCa intervals per coffee variety; bootstrap of the median as a robust alternative</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="results">
+<h2>5. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<section id="confidence-intervals-for-mean-annual-income-95">
+<h3>5.1 Confidence intervals for mean annual income (95%)<a class="headerlink" href="#confidence-intervals-for-mean-annual-income-95" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Lower</p></th>
+<th class="head"><p>Upper</p></th>
+<th class="head"><p>Width</p></th>
+<th class="head"><p>Asymmetry</p></th>
+<th class="head"><p>Bias adj.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Parametric (<em>t</em>)</p></td>
+<td><p>35,007</p></td>
+<td><p>50,512</p></td>
+<td><p>15,506</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bootstrap percentile</p></td>
+<td><p>34,980</p></td>
+<td><p>50,606</p></td>
+<td><p>15,626</p></td>
+<td><p>67</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bootstrap BCa</strong></p></td>
+<td><p><strong>35,481</strong></p></td>
+<td><p><strong>51,029</strong></p></td>
+<td><p>15,548</p></td>
+<td><p><strong>990</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All three intervals have nearly the <strong>same width</strong>. The BCa difference is that it is <strong>shifted and asymmetric</strong>,
+extending further above the mean to reflect the right-skewed sampling distribution.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">NAVY</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">GOLD</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREY</span> <span class="o">=</span> <span class="s2">&quot;#0A2540&quot;</span><span class="p">,</span> <span class="s2">&quot;#1565C0&quot;</span><span class="p">,</span> <span class="s2">&quot;#4FC3F7&quot;</span><span class="p">,</span> <span class="s2">&quot;#E0A030&quot;</span><span class="p">,</span> <span class="s2">&quot;#B23A48&quot;</span><span class="p">,</span> <span class="s2">&quot;#8A94A6&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;figure.dpi&quot;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s2">&quot;axes.spines.top&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;axes.spines.right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;axes.grid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;axes.titleweight&quot;</span><span class="p">:</span> <span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;axes.titlesize&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Transcribed from the report tables (Table 5 and Table 6)</span>
+<span class="n">ci</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Parametric (t)&quot;</span><span class="p">,</span> <span class="s2">&quot;Bootstrap percentile&quot;</span><span class="p">,</span> <span class="s2">&quot;Bootstrap BCa&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;lo&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35006.78</span><span class="p">,</span> <span class="mf">34980.27</span><span class="p">,</span> <span class="mf">35480.64</span><span class="p">],</span>
+    <span class="s2">&quot;hi&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">50512.32</span><span class="p">,</span> <span class="mf">50606.17</span><span class="p">,</span> <span class="mf">51028.89</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="n">mean_income</span> <span class="o">=</span> <span class="mf">42759.55</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">7000</span><span class="p">,</span> <span class="mi">8000</span><span class="p">],</span>
+                     <span class="s2">&quot;sd_width&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">992.39</span><span class="p">,</span> <span class="mf">451.43</span><span class="p">,</span> <span class="mf">220.13</span><span class="p">,</span> <span class="mf">187.53</span><span class="p">,</span> <span class="mf">149.81</span><span class="p">]})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">11.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ypos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ci</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ypos</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">iterrows</span><span class="p">(),</span> <span class="p">[</span><span class="n">GREY</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">r</span><span class="o">.</span><span class="n">lo</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">hi</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">solid_capstyle</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">lo</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.22</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">lo</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">hi</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.22</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">hi</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mean_income</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">mean_income</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.72</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;sample mean </span><span class="si">{</span><span class="n">mean_income</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ypos</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">33500</span><span class="p">,</span> <span class="mi">52500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;95% CIs for mean income (PHP)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conv</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="n">conv</span><span class="o">.</span><span class="n">sd_width</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">BLUE</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mi">5000</span><span class="p">],</span> <span class="p">[</span><span class="mf">220.13</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GOLD</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;B = 5,000</span><span class="se">\n</span><span class="s2">(chosen)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="mf">220.13</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">conv</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="n">conv</span><span class="o">.</span><span class="n">sd_width</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Number of resamples (B)&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;SD of CI width across 20 runs (PHP)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Convergence: interval stability vs. B&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1150</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/1377eb66e5dc9ce2c2c069b6ee3050eb0c20cbce5996610bccbf8360650c8a68.png" src="../_images/1377eb66e5dc9ce2c2c069b6ee3050eb0c20cbce5996610bccbf8360650c8a68.png" />
+</div>
+</div>
+</section>
+<section id="what-the-four-diagnostic-experiments-showed">
+<h3>5.2 What the four diagnostic experiments showed<a class="headerlink" href="#what-the-four-diagnostic-experiments-showed" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Experiment</p></th>
+<th class="head"><p>Result</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Moment shifts</p></td>
+<td><p>Resamples reproduce the parent shape (skew ≈ 1.1), but the <strong>distribution of the resampled mean has skewness 0.044</strong></p></td>
+<td><p>Empirical demonstration of the Central Limit Theorem</p></td>
+</tr>
+<tr class="row-odd"><td><p>Selection frequency</p></td>
+<td><p>Single resample: ~63% unique farmers, ~37% out-of-bag; counts match <strong>Poisson(1)</strong> (e.g. 74 observed vs. 73.6 expected never-selected)</p></td>
+<td><p>Resampling is uniform, with no favouritism toward high or low incomes</p></td>
+</tr>
+<tr class="row-even"><td><p>Variance decomposition</p></td>
+<td><p>Bootstrap SE 3,968 vs. parametric SE 3,932 (ratio <strong>1.009</strong>)</p></td>
+<td><p>For the mean at n = 200, the methods agree closely on spread</p></td>
+</tr>
+<tr class="row-odd"><td><p>Convergence</p></td>
+<td><p>CI-width SD falls from 992 (B = 200) to <strong>220 (B = 5,000)</strong>, then improves only slowly</p></td>
+<td><p>B = 5,000 is a sensible cost/stability trade-off</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="stress-tests-blocks-and-median">
+<h3>5.3 Stress tests, blocks, and median<a class="headerlink" href="#stress-tests-blocks-and-median" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test</p></th>
+<th class="head"><p>Finding</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Remove top 5% outliers</strong></p></td>
+<td><p>BCa width 15,353 → 12,729 and asymmetry 1,086 → 452, so BCa’s asymmetry is driven by the right tail</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Small samples</strong></p></td>
+<td><p>BCa width grows honestly as n shrinks: <strong>56,991</strong> (n = 20) → 43,228 (40) → 29,991 (60) → 22,328 (80)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Block bootstrap by barangay</strong></p></td>
+<td><p>Width 13,427 vs. 15,548 for the standard bootstrap (~2,100 PHP difference)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Median vs. mean</strong></p></td>
+<td><p>Median 27,202 with BCa 16,415–39,389 (width 22,974) vs. mean width 15,548; the median is less sensitive to the tail but noisier</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subgroup BCa intervals transcribed from the report (Table 9)</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;variety&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Arabica&quot;</span><span class="p">,</span> <span class="s2">&quot;Robusta&quot;</span><span class="p">,</span> <span class="s2">&quot;Liberica&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">76</span><span class="p">],</span>
+    <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">95119.49</span><span class="p">,</span> <span class="mf">38725.43</span><span class="p">,</span> <span class="o">-</span><span class="mf">2600.36</span><span class="p">],</span>
+    <span class="s2">&quot;lo&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">82003.81</span><span class="p">,</span> <span class="mf">31649.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">5864.94</span><span class="p">],</span>
+    <span class="s2">&quot;hi&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">108739.18</span><span class="p">,</span> <span class="mf">45919.73</span><span class="p">,</span> <span class="mf">662.90</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">BLUE</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">GOLD</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="p">[[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="o">.</span><span class="n">lo</span><span class="p">],</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">hi</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]]],</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">ecolor</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">hi</span> <span class="o">+</span> <span class="mi">2500</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;mean </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">  (n=</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mf">2.45</span><span class="p">,</span> <span class="s2">&quot;break-even (PHP 0)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">variety</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">15000</span><span class="p">,</span> <span class="mi">145000</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean annual income (PHP), 95% BCa interval&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Income by coffee variety&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/82af59d50ea5f0e7bab0105d57ea6eb11d07cdfdf1557712d80599fda7b5b257.png" src="../_images/82af59d50ea5f0e7bab0105d57ea6eb11d07cdfdf1557712d80599fda7b5b257.png" />
+</div>
+</div>
+<p><strong>Subgroup takeaways:</strong> Arabica (n = 70) averages PHP 95,119 with an interval entirely above zero; Robusta
+(n = 54) averages PHP 38,725; <strong>Liberica (n = 76) averages −PHP 2,600 and its interval crosses zero</strong>, so
+average profitability is not distinguishable from break-even in this dataset.</p>
+</section>
+</section>
+<section id="data-science-concepts-demonstrated">
+<h2>6. Data Science Concepts Demonstrated<a class="headerlink" href="#data-science-concepts-demonstrated" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Where it appears</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Resampling &amp; sampling distributions</strong></p></td>
+<td><p>Bootstrap mean, SE, and full distribution of the estimator</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Confidence-interval methodology</strong></p></td>
+<td><p>Parametric vs. percentile vs. BCa; bias correction and acceleration (jackknife)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Central Limit Theorem (empirical)</strong></p></td>
+<td><p>Skew 1.10 in the data, 0.044 in the bootstrap mean distribution</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Computational experimentation</strong></p></td>
+<td><p>Selection-frequency matrix, Poisson(1) check, out-of-bag share (≈ 36.8%)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Variance decomposition</strong></p></td>
+<td><p>Within- vs. across-resample variance and bootstrap/parametric SE ratio</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Convergence diagnostics</strong></p></td>
+<td><p>20 independent runs per B to choose the number of resamples</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Robust statistics</strong></p></td>
+<td><p>Median bootstrap; outlier sensitivity</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Clustered data</strong></p></td>
+<td><p>Block bootstrap to probe the i.i.d. assumption</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Subgroup inference</strong></p></td>
+<td><p>BCa intervals per coffee variety</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Synthetic data &amp; external validity</strong></p></td>
+<td><p>Explicit limits on generalising beyond the generated sample</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Reproducible research</strong></p></td>
+<td><p>Fixed seed, parameterised R Markdown, one-click PDF</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limitations-next-steps">
+<h2>7. Limitations &amp; Next Steps<a class="headerlink" href="#limitations-next-steps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Synthetic data.</strong> Results describe the <em>method</em> on realistic data, not real Bukidnon incomes. Validate on
+Philippine Statistics Authority or cooperative survey data.</p></li>
+<li><p><strong>“BCa outperforms” needs a coverage test.</strong> The evidence here is interval <em>shape</em> on one dataset (widths
+are nearly equal). Run a Monte Carlo simulation to compare <strong>actual coverage</strong> of <em>t</em>, percentile, and BCa
+intervals across skewness levels and sample sizes.</p></li>
+<li><p><strong>Clustering.</strong> The block-bootstrap interval was <em>narrower</em>, not wider; positive within-barangay
+correlation would normally widen it. That points to little clustering in the synthetic data, so the
+question needs real data to answer.</p></li>
+<li><p><strong>Finish the stress tests.</strong> The extreme-skewness test described in the methodology has no reported results yet.</p></li>
+<li><p><strong>Only the mean and median.</strong> Extend to trimmed means, quantiles, or differences between varieties, with
+multiple-comparison control.</p></li>
+<li><p><strong>Model-based extension.</strong> Regress income on farm size, variety, and cost with bootstrap standard errors.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="kaggle-dataset-finder.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Kaggle Dataset Finder: LLM + Semantic Search Pipeline</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="visitor-tracker.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-handling">3. Preprocessing &amp; Data Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-for-mean-annual-income-95">5.1 Confidence intervals for mean annual income (95%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-four-diagnostic-experiments-showed">5.2 What the four diagnostic experiments showed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stress-tests-blocks-and-median">5.3 Stress tests, blocks, and median</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

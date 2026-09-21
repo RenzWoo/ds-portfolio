@@ -1,0 +1,1058 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Philippine Volcanic Eruptions: Does Explosivity Predict Deaths? &#8212; Portfolio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/volcanic-eruptions';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="U.S. Diabetes Prevalence: A 3D County-Level Choropleth" href="diabetes-3d-map.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Portfolio</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI &amp; Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="smart-trip-cdo.html">SmartTrip CDO: Static RAG for Travel Itineraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-direction-ml.html">Market Direction Prediction: From Chart-Image CNN to Tabular ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaggle-dataset-finder.html">Kaggle Dataset Finder: LLM + Semantic Search Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics &amp; Data Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="coffee-bootstrap.html">Robust Income Estimation for Coffee Farmers: A Bootstrap Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visitor-tracker.html">Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="diabetes-3d-map.html">U.S. Diabetes Prevalence: A 3D County-Level Choropleth</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Philippine Volcanic Eruptions: Does Explosivity Predict Deaths?</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/RenzWoo/ds-portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/volcanic-eruptions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Philippine Volcanic Eruptions: Does Explosivity Predict Deaths?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">3. Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="philippine-volcanic-eruptions-does-explosivity-predict-deaths">
+<h1>Philippine Volcanic Eruptions: Does Explosivity Predict Deaths?<a class="headerlink" href="#philippine-volcanic-eruptions-does-explosivity-predict-deaths" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>Course portfolio activity (Portfolio 4): exploratory analysis + infographic</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Domain</strong></p></td>
+<td><p>Natural hazards · Disaster risk · Data storytelling</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tools</strong></p></td>
+<td><p>R (<code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>, <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>, <code class="docutils literal notranslate"><span class="pre">ggcorrplot</span></code>), R Markdown → PDF; Python (pandas, matplotlib) for the replication cells on this page</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Date</strong></p></td>
+<td><p>April 2025</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Repository</strong></p></td>
+<td><p>[GitHub repo link]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>TL;DR:</strong> Using historical eruption records for the Philippines, this analysis compares the <strong>Volcanic
+Explosivity Index (VEI)</strong> with <strong>death toll</strong> for the five highest-VEI eruptions that have recorded
+deaths. The link is weak (r = 0.19): <strong>how explosive an eruption is does not determine how many people die.</strong>
+Location, secondary hazards (lahars, base surges), timing, and preparedness matter more.</p>
+</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-4 sd-row-cols-lg-4 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+44</div>
+<p class="sd-card-text">eruption records in the source CSV</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+23</div>
+<p class="sd-card-text">records with both VEI and deaths reported</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+5</div>
+<p class="sd-card-text">eruptions analysed in depth</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+r = 0.19</div>
+<p class="sd-card-text">VEI vs. deaths in the analysed set</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="problem-statement">
+<h2>1. Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h2>
+<p>VEI is a standard measure of eruption <em>magnitude</em>; deaths measure human <em>consequence</em>. <strong>Do more explosive
+eruptions necessarily kill more people?</strong> Answering this matters for risk communication: if explosivity alone
+does not predict mortality, monitoring and evacuation planning should focus on exposure and response.</p>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Build a clean analysis table from a raw historical eruption dataset.</p></li>
+<li><p>Quantify the VEI–deaths relationship and report it honestly given the tiny sample.</p></li>
+<li><p>Explain <em>why</em> the numbers behave this way using hazard type, population exposure, and timing.</p></li>
+<li><p>Communicate the story in a single infographic.</p></li>
+</ul>
+</section>
+<section id="data-storage">
+<h2>2. Data &amp; Storage<a class="headerlink" href="#data-storage" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Sources</strong></p></td>
+<td><p>Database of Volcanic Eruptions (Kaggle), NOAA/NGDC volcano records, and PHIVOLCS references</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Format</strong></p></td>
+<td><p>Flat CSV (<code class="docutils literal notranslate"><span class="pre">Volcano-Philippines.csv</span></code>), one row per eruption</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Size</strong></p></td>
+<td><p>44 rows × 18 columns</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Key fields</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Year,</span> <span class="pre">Month,</span> <span class="pre">Day,</span> <span class="pre">Name,</span> <span class="pre">Location,</span> <span class="pre">Latitude,</span> <span class="pre">Longitude,</span> <span class="pre">Elevation</span> <span class="pre">(m),</span> <span class="pre">Type,</span> <span class="pre">VEI,</span> <span class="pre">Agent,</span> <span class="pre">Deaths,</span> <span class="pre">Damage</span> <span class="pre">($Mil),</span> <span class="pre">Houses</span> <span class="pre">Destroyed,</span> <span class="pre">Total</span> <span class="pre">Missing,</span> <span class="pre">Total</span> <span class="pre">Injuries</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outputs</strong></p></td>
+<td><p>R Markdown report (PDF), infographic PNG, and the CSV kept in the repository</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Loading the CSV and profiling missing values (replicated here in Python from the same file):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/Volcano-Philippines.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows x </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> columns&quot;</span><span class="p">)</span>
+
+<span class="n">missing</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;missing&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">missing</span><span class="p">[</span><span class="s2">&quot;% missing&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">missing</span><span class="p">[</span><span class="s2">&quot;missing&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">missing</span><span class="p">[</span><span class="n">missing</span><span class="p">[</span><span class="s2">&quot;missing&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;missing&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44 rows x 18 columns
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>missing</th>
+      <th>% missing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Total Missing</th>
+      <td>43</td>
+      <td>97.7</td>
+    </tr>
+    <tr>
+      <th>Damage ($Mil)</th>
+      <td>42</td>
+      <td>95.5</td>
+    </tr>
+    <tr>
+      <th>Houses Destroyed</th>
+      <td>41</td>
+      <td>93.2</td>
+    </tr>
+    <tr>
+      <th>Total Injuries</th>
+      <td>39</td>
+      <td>88.6</td>
+    </tr>
+    <tr>
+      <th>Deaths</th>
+      <td>16</td>
+      <td>36.4</td>
+    </tr>
+    <tr>
+      <th>Agent</th>
+      <td>15</td>
+      <td>34.1</td>
+    </tr>
+    <tr>
+      <th>Day</th>
+      <td>6</td>
+      <td>13.6</td>
+    </tr>
+    <tr>
+      <th>Death Description</th>
+      <td>5</td>
+      <td>11.4</td>
+    </tr>
+    <tr>
+      <th>VEI</th>
+      <td>5</td>
+      <td>11.4</td>
+    </tr>
+    <tr>
+      <th>Month</th>
+      <td>3</td>
+      <td>6.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Most impact columns are too sparse to use (damage, houses destroyed, missing persons, and injuries are each</p>
+<blockquote>
+<div><p>88% empty), and 16 records have no death count. That is why the analysis centres on <strong>VEI</strong> and <strong>Deaths</strong>.</p>
+</div></blockquote>
+</section>
+<section id="preprocessing">
+<h2>3. Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Rename</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code> → <code class="docutils literal notranslate"><span class="pre">Volcano</span></code> for readable output</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Handle missing values</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">drop_na(Deaths,</span> <span class="pre">VEI)</span></code> keeps the <strong>23</strong> eruptions with both variables</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Rank</strong></p></td>
+<td><p>Sort by VEI (descending), then by deaths (descending)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Select</strong></p></td>
+<td><p>Take the top five rows as the focus set</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Summarise</strong></p></td>
+<td><p>Correlation of VEI with deaths (<code class="docutils literal notranslate"><span class="pre">ggcorrplot</span></code> in R)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Volcano&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">,</span> <span class="s2">&quot;VEI&quot;</span><span class="p">])</span>
+<span class="n">ranked</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;VEI&quot;</span><span class="p">,</span> <span class="s2">&quot;Deaths&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="n">top5</span> <span class="o">=</span> <span class="n">ranked</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)[[</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Volcano&quot;</span><span class="p">,</span> <span class="s2">&quot;Location&quot;</span><span class="p">,</span> <span class="s2">&quot;VEI&quot;</span><span class="p">,</span> <span class="s2">&quot;Deaths&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">top5</span><span class="p">[</span><span class="s2">&quot;VEI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">top5</span><span class="p">[</span><span class="s2">&quot;VEI&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">top5</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">top5</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Records kept after dropping missing VEI/Deaths: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">top5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Records kept after dropping missing VEI/Deaths: 23 of 44
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Volcano</th>
+      <th>Location</th>
+      <th>VEI</th>
+      <th>Deaths</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1991</td>
+      <td>Pinatubo</td>
+      <td>Luzon-Philippines</td>
+      <td>6</td>
+      <td>847</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1911</td>
+      <td>Taal</td>
+      <td>Luzon-Philippines</td>
+      <td>4</td>
+      <td>1335</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1814</td>
+      <td>Mayon</td>
+      <td>Luzon-Philippines</td>
+      <td>4</td>
+      <td>1200</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965</td>
+      <td>Taal</td>
+      <td>Luzon-Philippines</td>
+      <td>4</td>
+      <td>355</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1951</td>
+      <td>Hibok-Hibok</td>
+      <td>Mindanao-Philippines</td>
+      <td>3</td>
+      <td>500</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="method">
+<h2>4. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Exploratory analysis:</strong> bar chart of deaths per eruption, coloured by VEI.</p></li>
+<li><p><strong>Correlation:</strong> Pearson r between VEI and deaths for the analysed set.</p></li>
+<li><p><strong>Contextual reading:</strong> each eruption is interpreted with hazard type, affected area, and timing
+(from the volcanology literature and PHIVOLCS/NGDC references, not derived from the CSV).</p></li>
+<li><p><strong>Communication:</strong> the findings are condensed into a single infographic.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">NAVY</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">GOLD</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREY</span> <span class="o">=</span> <span class="s2">&quot;#0A2540&quot;</span><span class="p">,</span> <span class="s2">&quot;#1565C0&quot;</span><span class="p">,</span> <span class="s2">&quot;#4FC3F7&quot;</span><span class="p">,</span> <span class="s2">&quot;#E0A030&quot;</span><span class="p">,</span> <span class="s2">&quot;#B23A48&quot;</span><span class="p">,</span> <span class="s2">&quot;#8A94A6&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;figure.dpi&quot;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s2">&quot;axes.spines.top&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;axes.spines.right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;axes.grid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;axes.titleweight&quot;</span><span class="p">:</span> <span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;axes.titlesize&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">11.5</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;width_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.15</span><span class="p">]})</span>
+
+<span class="c1"># Left: the five analysed eruptions</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">top5</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">top5</span><span class="o">.</span><span class="n">Volcano</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">top5</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Deaths&quot;</span><span class="p">)</span>
+<span class="n">vei_colors</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;#F4A582&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;#D6604D&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;#67001F&quot;</span><span class="p">}</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Deaths</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">vei_colors</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">VEI</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">Deaths</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">VEI</span><span class="p">)):</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">  (VEI </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1750</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;The five analysed eruptions&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Deaths&quot;</span><span class="p">)</span>
+
+<span class="c1"># Right: all records that have both values</span>
+<span class="n">jit</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">clean</span><span class="p">))</span>
+<span class="n">in_top</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ranked</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">clean</span><span class="o">.</span><span class="n">VEI</span><span class="p">[</span><span class="o">~</span><span class="n">in_top</span><span class="p">]</span> <span class="o">+</span> <span class="n">jit</span><span class="p">[</span><span class="o">~</span><span class="n">in_top</span><span class="p">],</span> <span class="n">clean</span><span class="o">.</span><span class="n">Deaths</span><span class="p">[</span><span class="o">~</span><span class="n">in_top</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GREY</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;other records (n = 18)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">clean</span><span class="o">.</span><span class="n">VEI</span><span class="p">[</span><span class="n">in_top</span><span class="p">]</span> <span class="o">+</span> <span class="n">jit</span><span class="p">[</span><span class="n">in_top</span><span class="p">],</span> <span class="n">clean</span><span class="o">.</span><span class="n">Deaths</span><span class="p">[</span><span class="n">in_top</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;analysed five&quot;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">clean</span><span class="p">[(</span><span class="n">clean</span><span class="o">.</span><span class="n">Volcano</span> <span class="o">==</span> <span class="s2">&quot;Mayon&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">clean</span><span class="o">.</span><span class="n">Year</span> <span class="o">==</span> <span class="mi">2006</span><span class="p">)]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Mayon 2006</span><span class="se">\n</span><span class="s2">VEI 1, 1,266 deaths&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">VEI</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">Deaths</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span>
+                 <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">,</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GREY</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;VEI&quot;</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Deaths (log scale)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;All 23 records with VEI and deaths&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/4a0ed26b6dd2a2b36198c0924aff58c46fc98a095e7fb52c80687809a84c5cbd.png" src="../_images/4a0ed26b6dd2a2b36198c0924aff58c46fc98a095e7fb52c80687809a84c5cbd.png" />
+</div>
+</div>
+</section>
+<section id="results">
+<h2>5. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/volcano-infographic.jpg"><img alt="Infographic of five Philippine volcanic eruptions" src="../_images/volcano-infographic.jpg" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Infographic: VEI, eruption type, and death toll for Pinatubo (1991), Mayon (1814), Taal (1911), Hibok-Hibok (1951), and Taal (1965).</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Key findings</strong></p>
+<ol class="arabic simple">
+<li><p><strong>VEI alone does not predict mortality.</strong> The correlation is weak (r = 0.19, r² ≈ 0.035), so explosivity
+explains only a few percent of the variation in deaths. Hibok-Hibok (VEI 3, 500 deaths) killed more people than
+Taal 1965 (VEI 4, 355 deaths).</p></li>
+<li><p><strong>Secondary hazards and exposure drive casualties.</strong> From the report’s context: lahars caused roughly 60% of
+Pinatubo’s deaths, Taal 1911 affected an estimated 500,000 people within 15 km, and Mayon 1814 struck at night,
+limiting evacuation.</p></li>
+<li><p><strong>Preparedness saves lives.</strong> The 1991 Pinatubo eruption was the century’s largest (VEI 6) yet caused fewer
+deaths than two VEI 4 events (Taal 1911 and Mayon 1814), and modern PHIVOLCS monitoring and evacuations are credited with saving thousands.</p></li>
+</ol>
+<p><strong>How sensitive is r to which eruptions are chosen?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_deaths</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Deaths&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;As analysed: top 5 by VEI (ties by deaths)&quot;</span><span class="p">,</span> <span class="n">ranked</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;Top 5 ranked by deaths instead&quot;</span><span class="p">,</span> <span class="n">by_deaths</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;All records with both values&quot;</span><span class="p">,</span> <span class="n">clean</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="s2">&quot;r (VEI, Deaths)&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;VEI&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]),</span> <span class="mi">2</span><span class="p">)}</span>
+              <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selection</th>
+      <th>n</th>
+      <th>r (VEI, Deaths)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>As analysed: top 5 by VEI (ties by deaths)</td>
+      <td>5</td>
+      <td>0.19</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Top 5 ranked by deaths instead</td>
+      <td>5</td>
+      <td>-0.21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>All records with both values</td>
+      <td>23</td>
+      <td>0.38</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The conclusion (<em>VEI is at best a weak-to-moderate predictor of deaths</em>) holds across all three selections, but
+the exact number moves from −0.21 to 0.38, which is expected with so few points.</p>
+</section>
+<section id="data-science-concepts-demonstrated">
+<h2>6. Data Science Concepts Demonstrated<a class="headerlink" href="#data-science-concepts-demonstrated" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Where it appears</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Data cleaning</strong></p></td>
+<td><p>Renaming, profiling missingness, listwise deletion on the two analysis variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Variable selection</strong></p></td>
+<td><p>Choosing an intensity measure (VEI) and a consequence measure (deaths) and justifying both</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Correlation &amp; effect size</strong></p></td>
+<td><p>Pearson r and r² (variance explained)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Small-sample caution</strong></p></td>
+<td><p>Explicit statement that five points are illustrative, not conclusive</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Confounding / lurking variables</strong></p></td>
+<td><p>Population exposure, hazard type, timing, preparedness</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data visualisation</strong></p></td>
+<td><p>Bar chart with VEI as fill, correlation plot, and infographic design</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Communicating uncertainty</strong></p></td>
+<td><p>Notes on limits of the dataset and inference</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reproducible reporting</strong></p></td>
+<td><p>R Markdown → PDF with code, tables, and figures together</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limitations-next-steps">
+<h2>7. Limitations &amp; Next Steps<a class="headerlink" href="#limitations-next-steps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Selection rule and labelling.</strong> The R code ranks by VEI (ties by deaths), so the set is the <em>five
+highest-VEI eruptions with recorded deaths</em>, not the five deadliest. Ranking by deaths instead brings in
+Mayon 2006 (VEI 1, 1,266 deaths). Either rename the set or re-rank, and state the rule on the infographic.</p></li>
+<li><p><strong>Selecting on VEI restricts its range</strong> and can mask the relationship; using all 23 records is more defensible.</p></li>
+<li><p><strong>Missing data is not random.</strong> Sixteen eruptions have no death count; unrecorded, zero, and unknown are
+different things. Dropping them biases the sample toward well-documented, deadlier events.</p></li>
+<li><p><strong>Small n and no uncertainty interval.</strong> Add a bootstrap confidence interval for r (see the coffee-income project) and a rank-based measure (Spearman).</p></li>
+<li><p><strong>Model the drivers.</strong> Add population within 15 km, eruption type/agent, and time of day, then fit a count model
+(e.g. Poisson or negative binomial) for deaths.</p></li>
+<li><p><strong>Historical bias.</strong> Older events are reported differently from modern ones; include era as a variable.</p></li>
+<li><p><strong>Interactive map.</strong> Plot eruptions by location and VEI with population-exposure layers.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="diabetes-3d-map.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">U.S. Diabetes Prevalence: A 3D County-Level Choropleth</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">3. Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

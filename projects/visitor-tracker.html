@@ -1,0 +1,1063 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline &#8212; Portfolio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/visitor-tracker';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="U.S. Diabetes Prevalence: A 3D County-Level Choropleth" href="diabetes-3d-map.html" />
+    <link rel="prev" title="Robust Income Estimation for Coffee Farmers: A Bootstrap Study" href="coffee-bootstrap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Portfolio</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI &amp; Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="smart-trip-cdo.html">SmartTrip CDO: Static RAG for Travel Itineraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-direction-ml.html">Market Direction Prediction: From Chart-Image CNN to Tabular ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaggle-dataset-finder.html">Kaggle Dataset Finder: LLM + Semantic Search Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics &amp; Data Engineering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="coffee-bootstrap.html">Robust Income Estimation for Coffee Farmers: A Bootstrap Study</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="diabetes-3d-map.html">U.S. Diabetes Prevalence: A 3D County-Level Choropleth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanic-eruptions.html">Philippine Volcanic Eruptions: Does Explosivity Predict Deaths?</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/RenzWoo/ds-portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/visitor-tracker.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow">Data flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-design">Storage design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-visitor-logs">Schema (<code class="docutils literal notranslate"><span class="pre">visitor_logs</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-engineering-preprocessing">3. Data Engineering &amp; Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outcome">4. Outcome</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#privacy-ethics-considerations">5. Privacy &amp; Ethics Considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="visitor-geolocation-tracker-fastapi-sqlite-data-pipeline">
+<h1>Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline<a class="headerlink" href="#visitor-geolocation-tracker-fastapi-sqlite-data-pipeline" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>Full-stack data-capture project (backend + database)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Domain</strong></p></td>
+<td><p>Data engineering · Web APIs · Geospatial telemetry</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tools</strong></p></td>
+<td><p>Python, FastAPI, SQLAlchemy ORM, SQLite, Jinja2, Leaflet.js, browser Geolocation API, ip-api.com, <code class="docutils literal notranslate"><span class="pre">user-agents</span></code>, Gunicorn</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Deployment</strong></p></td>
+<td><p>Render (Procfile-based web service)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Date</strong></p></td>
+<td><p>2026</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Repository</strong></p></td>
+<td><p>[GitHub repo link]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Live demo</strong></p></td>
+<td><p>[add link once the consent notice below is in place]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>TL;DR:</strong> A FastAPI service that records, for each visit, the <strong>client IP, IP-derived location, browser GPS
+position with accuracy, and device/OS/browser details</strong> into a SQLite database through SQLAlchemy. A
+Basic-Auth-protected admin area lets the owner view records, export them to CSV, and wipe the table. The project
+is a compact end-to-end example of <strong>collecting → enriching → storing → exporting</strong> data, and of the privacy
+questions that come with it.</p>
+</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-4 sd-row-cols-lg-4 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+1 table · 16 fields</div>
+<p class="sd-card-text">relational schema managed by an ORM</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+3</div>
+<p class="sd-card-text">data sources merged per record: browser GPS, IP-lookup API, User-Agent</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+7</div>
+<p class="sd-card-text">HTTP routes (4 public, 3 admin-protected)</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+CSV</div>
+<p class="sd-card-text">streamed export for downstream analysis</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="problem-statement">
+<h2>1. Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h2>
+<p>Web apps generate valuable telemetry (where visitors are, what device they use, how precise the location is),
+but that data has to be <strong>captured reliably, enriched, stored in a queryable form, and exported</strong>.</p>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Capture precise coordinates via the browser Geolocation API <em>and</em> a fallback coarse location from the IP address.</p></li>
+<li><p>Enrich each event with ISP/city/region/country and a parsed device profile.</p></li>
+<li><p>Persist events in a relational database with a defined schema.</p></li>
+<li><p>Provide a protected interface to inspect, export, and delete records.</p></li>
+<li><p>Deploy the service so it can be tested from real devices.</p></li>
+</ul>
+</section>
+<section id="data-storage">
+<h2>2. Data &amp; Storage<a class="headerlink" href="#data-storage" title="Link to this heading">#</a></h2>
+<section id="data-flow">
+<h3>Data flow<a class="headerlink" href="#data-flow" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Browser ── permission prompt ──▶ JavaScript Geolocation (lat, lon, accuracy)
+   │                                        │
+   │                              POST /log-location  (JSON)
+   ▼                                        ▼
+FastAPI  ── client IP ──▶ ip-api.com lookup (city, region, country, ISP)
+         ── User-Agent header ──▶ `user-agents` parser (device, OS, browser)
+         ── server clock ──▶ UTC timestamp
+                                            │  SQLAlchemy ORM (session per request)
+                                            ▼
+                                  SQLite  ·  table `visitor_logs`
+                                            │
+        Admin (HTTP Basic) ──▶ /logs (HTML table) · /download-logs (CSV) · /delete-logs
+</pre></div>
+</div>
+</section>
+<section id="storage-design">
+<h3>Storage design<a class="headerlink" href="#storage-design" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Choice</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Database</strong></p></td>
+<td><p>SQLite file (<code class="docutils literal notranslate"><span class="pre">logs.db</span></code>): embedded, zero-config, ideal for prototypes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Access layer</strong></p></td>
+<td><p>SQLAlchemy declarative ORM; <code class="docutils literal notranslate"><span class="pre">create_engine(&quot;sqlite:///logs.db&quot;,</span> <span class="pre">connect_args={&quot;check_same_thread&quot;:</span> <span class="pre">False})</span></code> so FastAPI worker threads can share the file</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Schema creation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Base.metadata.create_all()</span></code> on startup creates the table if missing</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sessions</strong></p></td>
+<td><p>One <code class="docutils literal notranslate"><span class="pre">SessionLocal()</span></code> per request, committed and closed explicitly</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Keys &amp; indexes</strong></p></td>
+<td><p>Integer primary key <code class="docutils literal notranslate"><span class="pre">id</span></code> with an index</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Time handling</strong></p></td>
+<td><p>Timestamps recorded in <strong>UTC</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Export</strong></p></td>
+<td><p>Rows written with <code class="docutils literal notranslate"><span class="pre">csv.writer</span></code> into an in-memory buffer and returned as a <code class="docutils literal notranslate"><span class="pre">StreamingResponse</span></code> (<code class="docutils literal notranslate"><span class="pre">Content-Disposition:</span> <span class="pre">attachment</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ad-hoc inspection</strong></p></td>
+<td><p>Helper script runs raw SQL (e.g. latest 5 rows by timestamp) through <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Repo hygiene</strong></p></td>
+<td><p>The committed database is essentially empty (a single local test row)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-visitor-logs">
+<h3>Schema (<code class="docutils literal notranslate"><span class="pre">visitor_logs</span></code>)<a class="headerlink" href="#schema-visitor-logs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># DDL copied from the project&#39;s logs.db (sqlite_master)</span>
+<span class="n">DDL</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">CREATE TABLE visitor_logs (</span>
+<span class="s2">    id INTEGER NOT NULL,</span>
+<span class="s2">    ip_address VARCHAR(50),</span>
+<span class="s2">    city TEXT, region TEXT, country TEXT, isp TEXT,</span>
+<span class="s2">    latitude FLOAT, longitude FLOAT,</span>
+<span class="s2">    user_agent TEXT,</span>
+<span class="s2">    device_brand VARCHAR(50), os VARCHAR(50), browser TEXT,</span>
+<span class="s2">    timestamp DATETIME,</span>
+<span class="s2">    bssid VARCHAR(50),</span>
+<span class="s2">    location_source VARCHAR(20),</span>
+<span class="s2">    accuracy FLOAT,</span>
+<span class="s2">    PRIMARY KEY (id)</span>
+<span class="s2">);</span>
+<span class="s2">CREATE INDEX ix_visitor_logs_id ON visitor_logs (id);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">source</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;auto-generated&quot;</span><span class="p">,</span> <span class="s2">&quot;ip_address&quot;</span><span class="p">:</span> <span class="s2">&quot;server (request.client.host)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-api.com&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-api.com&quot;</span><span class="p">,</span> <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-api.com&quot;</span><span class="p">,</span> <span class="s2">&quot;isp&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-api.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="s2">&quot;browser GPS&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="s2">&quot;browser GPS&quot;</span><span class="p">,</span> <span class="s2">&quot;user_agent&quot;</span><span class="p">:</span> <span class="s2">&quot;request header&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;device_brand&quot;</span><span class="p">:</span> <span class="s2">&quot;parsed from User-Agent&quot;</span><span class="p">,</span> <span class="s2">&quot;os&quot;</span><span class="p">:</span> <span class="s2">&quot;parsed from User-Agent&quot;</span><span class="p">,</span> <span class="s2">&quot;browser&quot;</span><span class="p">:</span> <span class="s2">&quot;parsed from User-Agent&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;server clock (UTC)&quot;</span><span class="p">,</span> <span class="s2">&quot;bssid&quot;</span><span class="p">:</span> <span class="s2">&quot;client-reported (optional)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;location_source&quot;</span><span class="p">:</span> <span class="s2">&quot;client-reported (GPS / ip-only)&quot;</span><span class="p">,</span> <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="s2">&quot;browser GPS (metres)&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">DDL</span><span class="p">)</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;PRAGMA table_info(visitor_logs)&quot;</span><span class="p">,</span> <span class="n">con</span><span class="p">)[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;pk&quot;</span><span class="p">]]</span>
+<span class="n">schema</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">schema</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">schema</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;column&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;primary key&quot;</span><span class="p">,</span> <span class="s2">&quot;filled from&quot;</span><span class="p">]</span>
+<span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">schema</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>column</th>
+      <th>type</th>
+      <th>primary key</th>
+      <th>filled from</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>id</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>auto-generated</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ip_address</td>
+      <td>VARCHAR(50)</td>
+      <td>0</td>
+      <td>server (request.client.host)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>city</td>
+      <td>TEXT</td>
+      <td>0</td>
+      <td>ip-api.com</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>region</td>
+      <td>TEXT</td>
+      <td>0</td>
+      <td>ip-api.com</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>country</td>
+      <td>TEXT</td>
+      <td>0</td>
+      <td>ip-api.com</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>isp</td>
+      <td>TEXT</td>
+      <td>0</td>
+      <td>ip-api.com</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>latitude</td>
+      <td>FLOAT</td>
+      <td>0</td>
+      <td>browser GPS</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>longitude</td>
+      <td>FLOAT</td>
+      <td>0</td>
+      <td>browser GPS</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>user_agent</td>
+      <td>TEXT</td>
+      <td>0</td>
+      <td>request header</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>device_brand</td>
+      <td>VARCHAR(50)</td>
+      <td>0</td>
+      <td>parsed from User-Agent</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>os</td>
+      <td>VARCHAR(50)</td>
+      <td>0</td>
+      <td>parsed from User-Agent</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>browser</td>
+      <td>TEXT</td>
+      <td>0</td>
+      <td>parsed from User-Agent</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>timestamp</td>
+      <td>DATETIME</td>
+      <td>0</td>
+      <td>server clock (UTC)</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>bssid</td>
+      <td>VARCHAR(50)</td>
+      <td>0</td>
+      <td>client-reported (optional)</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>location_source</td>
+      <td>VARCHAR(20)</td>
+      <td>0</td>
+      <td>client-reported (GPS / ip-only)</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>accuracy</td>
+      <td>FLOAT</td>
+      <td>0</td>
+      <td>browser GPS (metres)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="data-engineering-preprocessing">
+<h2>3. Data Engineering &amp; Preprocessing<a class="headerlink" href="#data-engineering-preprocessing" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Implementation</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Client-side capture</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">getCurrentPosition</span></code> with <code class="docutils literal notranslate"><span class="pre">enableHighAccuracy</span></code> and a 10-second timeout; result POSTed as JSON</p></td>
+<td><p>Get GPS-grade coordinates when the user allows it</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Graceful fallback</strong></p></td>
+<td><p>If GPS is denied or times out, the page posts <code class="docutils literal notranslate"><span class="pre">location_source</span> <span class="pre">=</span> <span class="pre">&quot;ip-only&quot;</span></code> and coordinates stay <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></td>
+<td><p>Keeps the record while preserving honest missing values</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Data enrichment</strong></p></td>
+<td><p>Server calls <code class="docutils literal notranslate"><span class="pre">ip-api.com/json/&lt;ip&gt;</span></code> and stores city, region, country, ISP; missing fields default to <code class="docutils literal notranslate"><span class="pre">&quot;Unknown&quot;</span></code></p></td>
+<td><p>Adds coarse geography even without GPS</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Device profiling</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user_agents.parse()</span></code> extracts device family, OS family, and browser family from the raw header</p></td>
+<td><p>Turns an unstructured string into analysable categories</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Type handling</strong></p></td>
+<td><p>Coordinates and accuracy stored as <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>; timestamps recorded in UTC</p></td>
+<td><p>Enables numeric and time-based analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Quality signal</strong></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> radius (metres) is stored with every GPS point</p></td>
+<td><p>Lets analysts filter out low-precision locations</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Presentation layer</strong></p></td>
+<td><p>Leaflet + OpenStreetMap map showing the captured position with an accuracy circle</p></td>
+<td><p>Visual validation of what was captured</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Export shaping</strong></p></td>
+<td><p>Explicit header row and column order in the CSV writer</p></td>
+<td><p>Clean hand-off to pandas, R, or Excel</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Routes</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Route</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GET</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p>public</p></td>
+<td><p>Landing page requesting location permission</p></td>
+</tr>
+<tr class="row-odd"><td><p>GET</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/tracking</span></code></p></td>
+<td><p>public</p></td>
+<td><p>Map page that triggers capture</p></td>
+</tr>
+<tr class="row-even"><td><p>GET</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/get-ip-info</span></code></p></td>
+<td><p>public</p></td>
+<td><p>JSON of IP-based geolocation</p></td>
+</tr>
+<tr class="row-odd"><td><p>POST</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/log-location</span></code></p></td>
+<td><p>public</p></td>
+<td><p>Receives GPS payload, enriches, inserts row</p></td>
+</tr>
+<tr class="row-even"><td><p>GET</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/logs</span></code></p></td>
+<td><p>admin (Basic Auth)</p></td>
+<td><p>HTML table, newest first</p></td>
+</tr>
+<tr class="row-odd"><td><p>GET</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/download-logs</span></code></p></td>
+<td><p>admin (Basic Auth)</p></td>
+<td><p>CSV export</p></td>
+</tr>
+<tr class="row-even"><td><p>POST</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/delete-logs</span></code></p></td>
+<td><p>admin (Basic Auth)</p></td>
+<td><p>Delete all rows</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="outcome">
+<h2>4. Outcome<a class="headerlink" href="#outcome" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A working <strong>capture → enrich → store → export</strong> pipeline, deployed as a web service on Render.</p></li>
+<li><p>A normalised, typed schema that can go straight into pandas (<code class="docutils literal notranslate"><span class="pre">pd.read_sql</span></code>) for analysis: visits per hour, device/OS mix, location-accuracy distribution.</p></li>
+<li><p>Practical exposure to <strong>ORM-based persistence, HTTP authentication, third-party API enrichment, and CSV streaming</strong>.</p></li>
+</ul>
+<p>Because the repository intentionally ships without visitor data, there are no usage statistics to report here.</p>
+</section>
+<section id="privacy-ethics-considerations">
+<h2>5. Privacy &amp; Ethics Considerations<a class="headerlink" href="#privacy-ethics-considerations" title="Link to this heading">#</a></h2>
+<p>Precise location and IP addresses are <strong>personal data</strong> (for example, under the Philippine Data Privacy Act of
+2012, RA 10173). Responsible use requires more than technical capture:</p>
+<ul class="simple">
+<li><p><strong>Consent first.</strong> The browser’s permission prompt covers GPS only. IP address and device details are still
+logged in the fallback path, so a clear on-page notice and an explicit opt-in should come <em>before</em> any logging.</p></li>
+<li><p><strong>Data minimisation.</strong> Store only the fields the analysis needs; consider coarsening coordinates.</p></li>
+<li><p><strong>Retention and deletion.</strong> Define how long records are kept; the admin delete route is a start, but automatic expiry is better.</p></li>
+<li><p><strong>Access control.</strong> Restrict the admin area, keep credentials in environment variables, and rotate them.</p></li>
+<li><p><strong>Purpose limitation.</strong> Use the tracker only with participants who know what is collected and why.</p></li>
+</ul>
+</section>
+<section id="data-science-concepts-demonstrated">
+<h2>6. Data Science Concepts Demonstrated<a class="headerlink" href="#data-science-concepts-demonstrated" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Where it appears</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Relational data modelling</strong></p></td>
+<td><p>Typed columns, primary key, index, and an explicit schema</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ORM &amp; persistence</strong></p></td>
+<td><p>SQLAlchemy sessions, declarative models, automatic table creation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Data collection pipeline</strong></p></td>
+<td><p>Client sensor → API → enrichment → storage</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data enrichment</strong></p></td>
+<td><p>IP geolocation and User-Agent parsing</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Missing-data handling</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> coordinates when GPS is unavailable; <code class="docutils literal notranslate"><span class="pre">&quot;Unknown&quot;</span></code> defaults</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data quality</strong></p></td>
+<td><p>Storing the accuracy radius alongside each coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>REST API design</strong></p></td>
+<td><p>Public collection endpoint and protected admin endpoints</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data export &amp; interoperability</strong></p></td>
+<td><p>Streaming CSV download</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Deployment</strong></p></td>
+<td><p>Gunicorn/Procfile web service on Render</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Privacy &amp; ethics</strong></p></td>
+<td><p>Consent, minimisation, retention, access control</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limitations-next-steps">
+<h2>7. Limitations &amp; Next Steps<a class="headerlink" href="#limitations-next-steps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Consent and notice.</strong> Add a consent banner and log only after opt-in (see Section 5).</p></li>
+<li><p><strong>Accurate client IPs behind a proxy.</strong> <code class="docutils literal notranslate"><span class="pre">request.client.host</span></code> may return the platform’s proxy address; read
+<code class="docutils literal notranslate"><span class="pre">X-Forwarded-For</span></code> (with trusted-proxy settings) so the stored IP is the visitor’s.</p></li>
+<li><p><strong>Durable storage.</strong> SQLite files on PaaS disks can be ephemeral across deploys. Move to a managed
+<strong>PostgreSQL</strong> instance (only the SQLAlchemy URL changes) and add <strong>Alembic</strong> migrations.</p></li>
+<li><p><strong>Schema growth.</strong> Normalise into <code class="docutils literal notranslate"><span class="pre">visitors</span></code>, <code class="docutils literal notranslate"><span class="pre">sessions</span></code>, and <code class="docutils literal notranslate"><span class="pre">devices</span></code>; index <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>; add constraints.</p></li>
+<li><p><strong>Robust enrichment.</strong> Use async HTTP with timeouts, retries, caching, and an HTTPS geolocation provider.</p></li>
+<li><p><strong>Validation and security.</strong> Validate request bodies with Pydantic; store secrets outside the code; use
+hashed credentials with constant-time comparison; add rate limiting.</p></li>
+<li><p><strong>Finish the admin features.</strong> The log page has a search box that is not wired to a server-side filter yet,
+and the CSV export omits <code class="docutils literal notranslate"><span class="pre">bssid</span></code>, <code class="docutils literal notranslate"><span class="pre">location_source</span></code>, and <code class="docutils literal notranslate"><span class="pre">accuracy</span></code>.</p></li>
+<li><p><strong>Analytics layer.</strong> Add pandas/SQL summaries and a small dashboard (visits by hour, device mix, accuracy distribution).</p></li>
+<li><p><strong>Tests.</strong> Add <code class="docutils literal notranslate"><span class="pre">pytest</span></code> with FastAPI’s <code class="docutils literal notranslate"><span class="pre">TestClient</span></code> for the routes and the enrichment functions.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="coffee-bootstrap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Robust Income Estimation for Coffee Farmers: A Bootstrap Study</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="diabetes-3d-map.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">U.S. Diabetes Prevalence: A 3D County-Level Choropleth</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow">Data flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-design">Storage design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-visitor-logs">Schema (<code class="docutils literal notranslate"><span class="pre">visitor_logs</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-engineering-preprocessing">3. Data Engineering &amp; Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outcome">4. Outcome</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#privacy-ethics-considerations">5. Privacy &amp; Ethics Considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,979 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SmartTrip CDO: Static RAG for Travel Itineraries &#8212; Portfolio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/smart-trip-cdo';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Market Direction Prediction: From Chart-Image CNN to Tabular ML" href="market-direction-ml.html" />
+    <link rel="prev" title="Portfolio" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Portfolio</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI &amp; Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SmartTrip CDO: Static RAG for Travel Itineraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-direction-ml.html">Market Direction Prediction: From Chart-Image CNN to Tabular ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaggle-dataset-finder.html">Kaggle Dataset Finder: LLM + Semantic Search Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics &amp; Data Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="coffee-bootstrap.html">Robust Income Estimation for Coffee Farmers: A Bootstrap Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visitor-tracker.html">Visitor Geolocation Tracker: FastAPI + SQLite Data Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="diabetes-3d-map.html">U.S. Diabetes Prevalence: A 3D County-Level Choropleth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanic-eruptions.html">Philippine Volcanic Eruptions: Does Explosivity Predict Deaths?</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/RenzWoo/ds-portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/smart-trip-cdo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SmartTrip CDO: Static RAG for Travel Itineraries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-engineering">3. Preprocessing &amp; Data Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-three-stage-pipeline">4. Method: Three-Stage Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation metrics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-results">Reading the results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="smarttrip-cdo-static-rag-for-travel-itineraries">
+<h1>SmartTrip CDO: Static RAG for Travel Itineraries<a class="headerlink" href="#smarttrip-cdo-static-rag-for-travel-itineraries" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>Research project + poster (Department of Data Science)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Domain</strong></p></td>
+<td><p>Generative AI · Tourism · Retrieval-Augmented Generation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tools</strong></p></td>
+<td><p>Python, pandas, Gemini 2.5 Flash API, regex, <code class="docutils literal notranslate"><span class="pre">to_markdown</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Date</strong></p></td>
+<td><p>[Month Year]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Repository</strong></p></td>
+<td><p>[GitHub repo link]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>TL;DR:</strong> A zero-cost, <em>static</em> RAG pipeline that turns a natural-language trip request into a
+day-by-day itinerary for Cagayan de Oro City. An LLM parses the request into JSON, <strong>pandas retrieves
+matching places deterministically</strong> from a hand-curated 47-place database, and the LLM writes the
+itinerary using <em>only</em> the retrieved rows. Tested on 10 traveller scenarios.</p>
+</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-4 sd-row-cols-lg-4 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+47</div>
+<p class="sd-card-text">manually curated places (POIs)</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+3</div>
+<p class="sd-card-text">pipeline stages: parse → filter → generate</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+10</div>
+<p class="sd-card-text">traveller test scenarios</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+₱0</div>
+<p class="sd-card-text">infrastructure cost: no vector DB, no paid APIs</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="problem-statement">
+<h2>1. Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h2>
+<p>Commercial itinerary platforms depend on live data feeds and paid APIs, which is often too costly for
+developing regions and small local governments. LLMs alone can write fluent itineraries, but they
+<strong>hallucinate places</strong> and ignore logistics (jumping across the city in one day).</p>
+<p><strong>Research question:</strong> <em>Can a static, manually curated database plus prompt engineering generate grounded,
+logistically coherent itineraries?</em></p>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Ground every recommendation in a verified local database (no invented places).</p></li>
+<li><p>Group each day’s stops by <strong>location cluster</strong> to reduce travel time.</p></li>
+<li><p>Respect the traveller’s budget tier, interests, group type, and trip length.</p></li>
+<li><p>Evaluate the system with measurable metrics instead of eyeballing the output.</p></li>
+</ul>
+<p>The work aligns with UN SDGs 8 (decent work and economic growth), 9 (industry, innovation, infrastructure)
+and 11 (sustainable cities and communities).</p>
+</section>
+<section id="data-storage">
+<h2>2. Data &amp; Storage<a class="headerlink" href="#data-storage" title="Link to this heading">#</a></h2>
+<p>The “database” is intentionally simple: <strong>one curated CSV loaded into a pandas DataFrame</strong>. There is no
+database server, vector store, or external API at inference time, which is what makes the system zero-cost.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>POI table</strong></p></td>
+<td><p>47 rows, curated by hand in a spreadsheet and exported to CSV</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Scenario table</strong></p></td>
+<td><p>10 test cases (<code class="docutils literal notranslate"><span class="pre">ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Scenario_Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Duration</span></code>, <code class="docutils literal notranslate"><span class="pre">Group_Type</span></code>, <code class="docutils literal notranslate"><span class="pre">Interests</span></code>, <code class="docutils literal notranslate"><span class="pre">Budget</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Storage in memory</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> for POIs; a Python <code class="docutils literal notranslate"><span class="pre">dict</span></code> keyed by scenario ID holds each run (itinerary text, filtered POIs, parsed preferences)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Exports</strong></p></td>
+<td><p>Evaluation summary saved to <code class="docutils literal notranslate"><span class="pre">baseline_comparison.csv</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>POI schema</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>text</p></td>
+<td><p>Unique place name (used as the grounding key)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>categorical</p></td>
+<td><p>Attraction, Food Market, Shopping, Museum, Restaurant, Accommodation, Landmark</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">category</span></code></p></td>
+<td><p>multi-valued text</p></td>
+<td><p>Pipe-delimited tags, e.g. <code class="docutils literal notranslate"><span class="pre">Adventure|Nature|WaterSports</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">location_cluster</span></code></p></td>
+<td><p>categorical</p></td>
+<td><p>Area label such as Cugman, Downtown, Uptown, River Area, Malasag, Opol, Tambo</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">avg_time_hours</span></code></p></td>
+<td><p>numeric</p></td>
+<td><p>Typical time spent</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">price_range</span></code></p></td>
+<td><p>ordinal</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">budget</span></code> &lt; <code class="docutils literal notranslate"><span class="pre">mid-range</span></code> &lt; <code class="docutils literal notranslate"><span class="pre">premium</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">minimum_price_estimate(Php)</span></code>, <code class="docutils literal notranslate"><span class="pre">maximum_price_estimate(Php)</span></code></p></td>
+<td><p>numeric (stored as text)</p></td>
+<td><p>Values such as <code class="docutils literal notranslate"><span class="pre">&quot;2,000&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">best_for</span></code></p></td>
+<td><p>text</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">best_for</span></code> is pipe-delimited (Families, Shoppers, Naturelovers, …)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rating</span></code></p></td>
+<td><p>numeric</p></td>
+<td><p>1–5 scale</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="preprocessing-data-engineering">
+<h2>3. Preprocessing &amp; Data Engineering<a class="headerlink" href="#preprocessing-data-engineering" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>What was done</p></th>
+<th class="head"><p>Why</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Structured extraction</strong></p></td>
+<td><p>Gemini turns free text into JSON: <code class="docutils literal notranslate"><span class="pre">duration_days</span></code>, <code class="docutils literal notranslate"><span class="pre">group_type</span></code>, <code class="docutils literal notranslate"><span class="pre">interests</span></code>, <code class="docutils literal notranslate"><span class="pre">budget_level</span></code>. Markdown fences are stripped and the JSON is parsed with error handling.</p></td>
+<td><p>Converts messy user language into machine-usable filters</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Budget hierarchy</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">budget</span></code> ⊂ <code class="docutils literal notranslate"><span class="pre">mid-range</span></code> ⊂ <code class="docutils literal notranslate"><span class="pre">premium</span></code>: a mid-range traveller can also see budget places</p></td>
+<td><p>Avoids empty results when cheaper options fit</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Multi-value matching</strong></p></td>
+<td><p>Pipe-delimited <code class="docutils literal notranslate"><span class="pre">category</span></code> and <code class="docutils literal notranslate"><span class="pre">best_for</span></code> are matched with case-insensitive regex (<code class="docutils literal notranslate"><span class="pre">str.contains</span></code>, OR-joined interests)</p></td>
+<td><p>Handles multi-label tags without a join table</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Numeric cleaning</strong></p></td>
+<td><p>Price strings with thousands separators (<code class="docutils literal notranslate"><span class="pre">&quot;2,000&quot;</span></code>) are stripped of commas and cast to <code class="docutils literal notranslate"><span class="pre">float</span></code> before averaging</p></td>
+<td><p>Needed for budget calculations</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Deterministic ordering</strong></p></td>
+<td><p>Sorted by <code class="docutils literal notranslate"><span class="pre">location_cluster</span></code>, <code class="docutils literal notranslate"><span class="pre">price_range</span></code>, then <code class="docutils literal notranslate"><span class="pre">rating</span></code> (descending)</p></td>
+<td><p>Keeps same-area places adjacent for the LLM</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cluster statistics</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> over <code class="docutils literal notranslate"><span class="pre">location_cluster</span></code> finds the <em>dominant cluster</em>, and this summary is injected into the prompt</p></td>
+<td><p>Steers the LLM to reuse a cluster across days</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Context serialization</strong></p></td>
+<td><p>Filtered rows are rendered with <code class="docutils literal notranslate"><span class="pre">DataFrame.to_markdown()</span></code> and inserted into the prompt</p></td>
+<td><p>This is the “retrieved context” in RAG</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Empty-result guard</strong></p></td>
+<td><p>If zero places match, generation is skipped and the case is logged as a <em>graceful failure</em></p></td>
+<td><p>Prevents the LLM from inventing content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="method-three-stage-pipeline">
+<h2>4. Method: Three-Stage Pipeline<a class="headerlink" href="#method-three-stage-pipeline" title="Link to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> User query ──▶ [1] Preference extraction ──▶ [2] Deterministic filtering ──▶ [3] Grounded generation ──▶ Itinerary
+ (free text)     Gemini → structured JSON      pandas on the curated CSV        Gemini, filtered rows only     (Day 1…N)
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Preference extraction (LLM):</strong> natural language → JSON with duration, group type, interests, budget tier.</p></li>
+<li><p><strong>Deterministic filtering (pandas):</strong> budget hierarchy + interest and group-type matching. This retrieval
+step is fully reproducible and auditable; it is the “static RAG” part.</p></li>
+<li><p><strong>Grounded generation (LLM):</strong> the prompt contains only the filtered POIs plus rules: <em>one primary
+location cluster per day</em>, 6–10 hours per day, a ±20% daily budget band, exact place names, and a strict
+output format (<code class="docutils literal notranslate"><span class="pre">###</span> <span class="pre">Day</span> <span class="pre">N</span></code> sections with cost and time per stop).</p></li>
+</ol>
+<p>The three tiers used for daily budgets are ₱800 (budget), ₱2,000 (mid-range), and ₱2,500 (premium).</p>
+<section id="evaluation-metrics">
+<h3>Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Target</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hallucination Rate (HR)</strong></p></td>
+<td><p>% of mentioned places that are not in the filtered POI set</p></td>
+<td><p>0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Clustering Efficiency (CE)</strong></p></td>
+<td><p>% of same-day place pairs that share a location cluster</p></td>
+<td><p>≥ 80%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Budget Variance (BV)</strong></p></td>
+<td><p>% deviation of average daily cost from the tier’s target budget</p></td>
+<td><p>≤ 10%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Narrative Quality (NQ)</strong></p></td>
+<td><p>Rule-based 1–5 score (day structure, logistics notes, costs, descriptions, personalisation)</p></td>
+<td><p>4–5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="results">
+<h2>5. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<p>Two runs are reported: the final numbers shown on the project poster and the latest saved notebook run.
+LLM generation is non-deterministic, so scores move between runs (see next steps).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Target</p></th>
+<th class="head"><p>Poster (final run)</p></th>
+<th class="head"><p>Notebook (saved run, 9 successful scenarios)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hallucination Rate</p></td>
+<td><p>0%</p></td>
+<td><p><strong>0.0%</strong></p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clustering Efficiency</p></td>
+<td><p>≥ 80%</p></td>
+<td><p><strong>76.32%</strong></p></td>
+<td><p>61.90%</p></td>
+</tr>
+<tr class="row-even"><td><p>Budget Variance</p></td>
+<td><p>≤ 10%</p></td>
+<td><p><strong>51%</strong></p></td>
+<td><p>54.50%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Narrative Quality</p></td>
+<td><p>4–5 / 5</p></td>
+<td><p><strong>4.07</strong></p></td>
+<td><p>4.06</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Scenario S9 (<em>Group Celebration</em>: nightlife, activities) matched <strong>0 places</strong>, and the pipeline correctly
+refused to generate rather than making something up.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">NAVY</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">GOLD</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREY</span> <span class="o">=</span> <span class="s2">&quot;#0A2540&quot;</span><span class="p">,</span> <span class="s2">&quot;#1565C0&quot;</span><span class="p">,</span> <span class="s2">&quot;#4FC3F7&quot;</span><span class="p">,</span> <span class="s2">&quot;#E0A030&quot;</span><span class="p">,</span> <span class="s2">&quot;#B23A48&quot;</span><span class="p">,</span> <span class="s2">&quot;#8A94A6&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;figure.dpi&quot;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s2">&quot;axes.spines.top&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;axes.spines.right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;axes.grid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;axes.titleweight&quot;</span><span class="p">:</span> <span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;axes.titlesize&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Per-scenario results transcribed from the saved notebook run (evaluation table)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;scenario&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span><span class="s2">&quot;S3&quot;</span><span class="p">,</span><span class="s2">&quot;S4&quot;</span><span class="p">,</span><span class="s2">&quot;S5&quot;</span><span class="p">,</span><span class="s2">&quot;S6&quot;</span><span class="p">,</span><span class="s2">&quot;S7&quot;</span><span class="p">,</span><span class="s2">&quot;S8&quot;</span><span class="p">,</span><span class="s2">&quot;S9&quot;</span><span class="p">,</span><span class="s2">&quot;S10&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Budget Backpacker&quot;</span><span class="p">,</span><span class="s2">&quot;Family Vacation&quot;</span><span class="p">,</span><span class="s2">&quot;Romantic Getaway&quot;</span><span class="p">,</span><span class="s2">&quot;Adventure Enthusiasts&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;Cultural Explorer&quot;</span><span class="p">,</span><span class="s2">&quot;Foodie Weekend&quot;</span><span class="p">,</span><span class="s2">&quot;Nature Lovers&quot;</span><span class="p">,</span><span class="s2">&quot;Business + Leisure&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;Group Celebration&quot;</span><span class="p">,</span><span class="s2">&quot;Relaxation Retreat&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;pois&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s2">&quot;CE&quot;</span><span class="p">:</span>   <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mf">66.67</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">57.14</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">33.33</span><span class="p">],</span>
+    <span class="s2">&quot;BV&quot;</span><span class="p">:</span>   <span class="p">[</span><span class="mf">12.5</span><span class="p">,</span> <span class="mf">38.33</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">37.5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">,</span> <span class="mf">51.67</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">better</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;CE&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="s2">&quot;Clustering efficiency (%)&quot;</span><span class="p">,</span> <span class="s2">&quot;higher is better&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;BV&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="s2">&quot;Budget variance (%)&quot;</span><span class="p">,</span> <span class="s2">&quot;lower is better&quot;</span><span class="p">),</span>
+<span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">yi</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="n">col</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">NAVY</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GOLD</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">target</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.45</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;target </span><span class="si">{</span><span class="s1">&#39;≥&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">col</span><span class="o">==</span><span class="s1">&#39;CE&#39;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;≤&#39;</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GOLD</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s2">(</span><span class="si">{</span><span class="n">better</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">108</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;CE&quot;</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;0 POIs matched: generation skipped&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GREY</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;italic&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2"> · </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> POIs)&quot;</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">scenario</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">pois</span><span class="p">)],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/816e702703bc8b9803f3df6422486b3490dfef8f76f292087c0332b4ef2b0c9c.png" src="../_images/816e702703bc8b9803f3df6422486b3490dfef8f76f292087c0332b4ef2b0c9c.png" />
+</div>
+</div>
+<section id="reading-the-results">
+<h3>Reading the results<a class="headerlink" href="#reading-the-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>No invented place names were flagged</strong> in any scenario, and the empty-result guard behaved as designed.</p></li>
+<li><p><strong>Clustering depends on database density.</strong> Scenarios that matched only 3 places (S4, S10) or many
+one-place clusters (S7) score low. The retrieval step can only cluster what the database contains.</p></li>
+<li><p><strong>Budget variance is high for premium scenarios (S3, S8).</strong> The price estimates in the 47-place table rarely
+reach the ₱2,500 daily target, which points to a calibration gap between the data and the budget tiers, not
+only an LLM issue.</p></li>
+<li><p><strong>Narrative quality is consistently around 4/5</strong>, but it is a rule-based structural score, not a human rating.</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/smart-trip-poster.jpg"><img alt="SmartTrip CDO research poster" src="../_images/smart-trip-poster.jpg" style="width: 85%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Project poster: abstract, three-stage architecture, evaluation results, and conclusion.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="data-science-concepts-demonstrated">
+<h2>6. Data Science Concepts Demonstrated<a class="headerlink" href="#data-science-concepts-demonstrated" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Where it appears</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Retrieval-Augmented Generation (RAG)</strong></p></td>
+<td><p>Deterministic retrieval from a curated table, then generation restricted to retrieved rows</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Grounding &amp; hallucination control</strong></p></td>
+<td><p>Exact-name rules, filtered context only, empty-result guard</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Prompt engineering</strong></p></td>
+<td><p>Cluster-aware strategy text, output templates, budget bands, mandatory rules</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LLM structured output</strong></p></td>
+<td><p>Query → JSON with validation and error handling</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Data curation &amp; schema design</strong></p></td>
+<td><p>Hand-built POI table with ordinal, categorical, and multi-valued fields</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Feature/text matching</strong></p></td>
+<td><p>Regex over pipe-delimited tags; budget hierarchy as an ordinal filter</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Evaluation design</strong></p></td>
+<td><p>Four custom metrics with explicit targets and a 10-scenario test set</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reproducibility trade-offs</strong></p></td>
+<td><p>Deterministic retrieval vs. non-deterministic generation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limitations-next-steps">
+<h2>7. Limitations &amp; Next Steps<a class="headerlink" href="#limitations-next-steps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Small hand-built database.</strong> 47 places leave coverage gaps (S9 returned nothing). Next: grow the table and
+add embedding-based retrieval so “nightlife” can match “bars” and “live music”.</p></li>
+<li><p><strong>Stricter hallucination check.</strong> HR currently searches the text for known place names from the filtered
+set, so it cannot detect a <em>made-up</em> name. Next: request JSON output and validate every listed place against
+the database, or extract all named places from the text and compare.</p></li>
+<li><p><strong>Metric refinement.</strong> CE and BV rely on name matching in free text, and NQ is a heuristic. Next: structured
+output for exact parsing, plus human ratings or a rubric-based LLM judge for narrative quality.</p></li>
+<li><p><strong>Run-to-run variance.</strong> The poster and notebook CE differ (76% vs. 62%). Next: fix the temperature, repeat
+each scenario several times, and report mean ± SD.</p></li>
+<li><p><strong>Move budget logic out of the prompt.</strong> Use a deterministic selection step (greedy/knapsack under budget and
+cluster constraints) before the LLM writes the narrative.</p></li>
+<li><p><strong>Travel time, not just cluster labels.</strong> Add a distance/time matrix between clusters.</p></li>
+<li><p><strong>User study.</strong> Validate itineraries with real travellers or local tourism officers.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Portfolio</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="market-direction-ml.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Market Direction Prediction: From Chart-Image CNN to Tabular ML</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage">2. Data &amp; Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-engineering">3. Preprocessing &amp; Data Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-three-stage-pipeline">4. Method: Three-Stage Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation metrics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-results">Reading the results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-concepts-demonstrated">6. Data Science Concepts Demonstrated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-next-steps">7. Limitations &amp; Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
