@@ -3,6 +3,7 @@ root: intro
 parts:
   - caption: AI & Machine Learning
     chapters:
+      - file: projects/stock-candles-classification
       - file: projects/smart-trip-cdo
       - file: projects/market-direction-ml
       - file: projects/kaggle-dataset-finder
