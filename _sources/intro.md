@@ -20,7 +20,7 @@
 **BS Data Science** · **University of Science and Technology of Southern Philippines**
 
 📍 Quezon City, Philippines  
-💻 [GitHub: @RenzWoo](https://github.com/RenzWoo) · 🔗 [LinkedIn](https://linkedin.com/in/YOUR-LINKEDIN-USERNAME) · ✉️ [your.email@example.com]
+💻 [GitHub: @RenzWoo](https://github.com/RenzWoo) · ✉️ alasan.renzo123@gmail.com
 :::
 ::::
 
@@ -105,6 +105,18 @@ matching Kaggle datasets by inspecting real columns and values.
 +++
 `Gemini` `sentence-transformers` `Kaggle API` `NLP`
 :::
+
+:::{grid-item-card} Stock Candlestick Classification
+:link: projects/stock-candles-classification
+:link-type: doc
+
+Fine-tunes five pre-trained `torchvision` models to classify stock candlestick chart images into 3 classes,
+comparing accuracy, precision, recall, and F1-score.
+
++++
+`PyTorch` `torchvision` `transfer learning` `image classification`
+:::
+
 ::::
 
 ### 📐 Statistics & Data Engineering
