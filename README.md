@@ -1,52 +1,56 @@
 # Data Science Portfolio
 
-Personal Data Science portfolio built with [Jupyter Book](https://jupyterbook.org) and hosted on GitHub Pages.
+Personal data science portfolio by Renzo Alasan, built with [MyST Markdown](https://mystmd.org) and deployed to GitHub Pages.
 
-**Live site:** https://RenzWoo.github.io/ds-portfolio/
+**Live site:** https://renzwoo.github.io/ds-portfolio/
 
 ## Structure
 
 ```text
 ds-portfolio/
-├── _config.yml                      # site title, author, repo link
-├── _toc.yml                         # navigation (projects grouped by theme)
-├── intro.md                         # homepage
-├── projects/
-│   ├── smart-trip-cdo.ipynb         # static RAG itinerary generator
-│   ├── market-direction-ml.ipynb    # forex direction prediction (tabular ML)
-│   ├── kaggle-dataset-finder.ipynb  # LLM + embeddings dataset discovery
-│   ├── coffee-bootstrap.ipynb       # bootstrap CI study (R)
-│   ├── visitor-tracker.ipynb        # FastAPI + SQLite pipeline
-│   ├── diabetes-3d-map.ipynb        # 3D county choropleth (R)
-│   └── volcanic-eruptions.ipynb     # eruptions EDA + infographic (R)
-├── images/                          # posters, infographics, profile photo
-└── data/                            # small CSVs used by executable cells
+├── myst.yml                  # site title, navigation, theme options
+├── intro.md                  # homepage (hero, project cards, skills, about)
+├── assets/
+│   ├── custom.css            # GitHub-style dark theme
+│   └── favicon.svg
+├── projects/                 # one notebook per case study, shown as saved
+│   ├── smart-trip-cdo.ipynb
+│   ├── market-direction-ml.ipynb
+│   ├── kaggle-dataset-finder.ipynb
+│   ├── stock-candles-classification.ipynb
+│   ├── coffee-bootstrap.ipynb
+│   ├── visitor-tracker.ipynb
+│   ├── diabetes-3d-map.ipynb
+│   └── volcanic-eruptions.ipynb
+├── labs/                     # laboratory tasks 1 to 6 (tasks 3 and 4 share one notebook)
+│   ├── lab-task-1.ipynb
+│   ├── lab-task-2.ipynb
+│   ├── lab-tasks-3-4.ipynb
+│   ├── lab-task-5.ipynb
+│   └── lab-task-6.ipynb
+├── images/                   # posters, infographics, avatar
+├── data/                     # small CSVs used by notebook cells
+└── .github/workflows/deploy.yml
 ```
 
-Notebooks are shown as saved (`execute_notebooks: "off"`), so charts are embedded in each `.ipynb`.
-To refresh a chart, re-run the notebook in Jupyter, save it, then rebuild.
+Notebooks are rendered with the outputs saved inside them; the build does not re-run any code.
+To refresh a chart, re-run the notebook in Jupyter, save it, and push.
 
-## Build locally
+## Preview locally
 
 ```bash
-pip install -U "jupyter-book<2" ghp-import matplotlib pandas
-jupyter-book build .
+npm install -g mystmd
+myst start
 ```
-
-Open `_build/html/index.html` in your browser.
 
 ## Publish
 
-```bash
-ghp-import -n -p -f _build/html
-```
+Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and deploys the site.
+One-time setup: in the repository, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**.
+(This replaces the old `ghp-import` flow, so there is no manual publish step.)
 
-## Update workflow
+## Before you publish: still to fill in
 
-```bash
-jupyter-book build .
-git add .
-git commit -m "Update portfolio"
-git push
-ghp-import -n -p -f _build/html
-```
+- A repository link for each case study (the old `[GitHub repo link]` rows were removed from the pages; add a `| **Repository** | [name](url) |` row to the table at the top of each notebook).
+- `stock-candles-classification`: say where the 249 images came from and what classes 0, 1, and 2 mean.
+- `visitor-tracker`: add a live demo link only after the consent notice is in place.

@@ -1,0 +1,52 @@
+version: 1
+project:
+  title: Renzo Alasan | Data Science Portfolio
+  description: 'Data science projects by Renzo Alasan: machine learning, statistical
+    inference, data engineering, and visualization, written up with data sources,
+    methods, results, and limitations.'
+  github: https://github.com/RenzWoo/ds-portfolio
+  authors:
+  - name: Renzo Alasan
+    github: RenzWoo
+  toc:
+  - file: intro.md
+  - file: featured-projects.md
+    children:
+    - file: projects/smart-trip-cdo.ipynb
+      title: SmartTrip CDO
+    - file: projects/market-direction-ml.ipynb
+      title: Market Direction Prediction
+    - file: projects/kaggle-dataset-finder.ipynb
+      title: Kaggle Dataset Finder
+    - file: projects/coffee-bootstrap.ipynb
+      title: Coffee Farmer Income Bootstrap
+    - file: projects/visitor-tracker.ipynb
+      title: Visitor Geolocation Tracker
+    - file: projects/diabetes-3d-map.ipynb
+      title: U.S. Diabetes 3D Choropleth
+    - file: projects/volcanic-eruptions.ipynb
+      title: Philippine Volcanic Eruptions
+  - file: laboratory-activities.md
+    children:
+    - file: labs/lab-task-1.ipynb
+      title: 'Lab Task 1: Data Analytics'
+    - file: labs/lab-task-2.ipynb
+      title: 'Lab Task 2: Forward Pass'
+    - file: labs/lab-tasks-3-4.ipynb
+      title: 'Lab Tasks 3 and 4: Backprop and Regression'
+    - file: labs/lab-task-5.ipynb
+      title: 'Lab Task 5: PyTorch Tensors'
+    - file: labs/lab-task-6.ipynb
+      title: 'Lab Task 6: CNN in PyTorch'
+  - file: laboratory-exercises.md
+    children:
+    - file: projects/stock-candles-classification.ipynb
+      title: Stock Candlestick Classification
+site:
+  template: book-theme
+  title: Renzo Alasan | Data Science Portfolio
+  options:
+    style: assets/custom.css
+    favicon: assets/favicon.svg
+    logo: images/u6PGO.jpg
+    logo_text: Renzo Alasan
